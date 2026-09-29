@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>LoopNode Tools — small, free tools that show their working</title>
 <meta name="description" content="LoopNode builds small, free web tools that answer one question well, run in your browser and cite the official source for every rule.">
@@ -11,6 +11,9 @@
 <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <link rel="canonical" href="https://loopnode.live/">
 <meta property="og:type" content="website">
@@ -28,59 +31,138 @@
 <body>
 <a class="skip" href="#content">Skip to content</a>
 <header class="site-header">
-<p class="brand"><a href="./">LoopNode</a></p>
+<div class="container header-inner">
+<a class="brand" href="./" aria-label="LoopNode Tools — home"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" class="logo-bg"/><circle cx="14" cy="17" r="7" class="logo-loop"/><circle cx="21" cy="10" r="3.6" class="logo-node"/></svg><span class="wordmark">LoopNode</span></a>
 <nav aria-label="Site"><ul><li><a href="./" aria-current="page">Tools</a></li><li><a href="./about.html">About</a></li><li><a href="./privacy.html">Privacy</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
+</div>
 </header>
 <main id="content">
-<section class="intro">
-  <h1>LoopNode Tools</h1>
-  <p class="lead">Small, free web tools that answer one question well — and show their working.</p>
-  <p>Each tool does one job for one audience, in their language, on its own address. It runs in your browser, quotes the official rule it applies, and tells you the date we last checked that rule. When a question needs an official decision, the tool says who makes it.</p>
+<section class="hero v2">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy-col">
+      <h1>LoopNode <span class="h1-accent">Tools</span></h1>
+      <p class="lead">Small, free web tools that answer one question well — and show their working.</p>
+      <ul class="chips" aria-label="What every LoopNode tool promises">
+      <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Free, no sign-up</li>
+      <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Official sources, dated</li>
+      <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11h14v10H5z"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Runs in your browser</li>
+    </ul>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#tools">Explore the tools</a>
+        <a class="btn btn-secondary" href="#how">How we build them</a>
+      </div>
+    </div>
+    <div class="showcase">
+      <a class="sc-card sc-car" href="https://car.loopnode.live/" aria-label="Does My Car Qualify? — open the car-loan interest deduction checker">
+        <span class="sc-bar"><span class="sc-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sc-host">car.loopnode.live</span></span>
+        <span class="sc-title">Does My Car Qualify?</span>
+        <span class="sc-field"><span class="sc-label">VIN</span><span class="sc-input">1HGCM82633A004352</span></span>
+        <span class="sc-row"><svg class="sc-ok" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Final assembly in the United States</span>
+        <span class="sc-row"><svg class="sc-ok" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Gross vehicle weight under 14,000 lb</span>
+        <span class="sc-big"><span class="sc-small">Deduction up to</span>$10,000 <span class="sc-small">a year</span></span>
+      </a>
+      <a class="sc-card sc-taqaud" href="https://taqaud.loopnode.live/" aria-label="حاسبة التقاعد — Saudi retirement date and pension estimator" lang="ar" dir="rtl">
+        <span class="sc-bar"><span class="sc-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sc-host" dir="ltr">taqaud.loopnode.live</span></span>
+        <span class="sc-title">حاسبة التقاعد</span>
+        <span class="sc-preview"><span class="sc-label">تاريخ بلوغ سن التقاعد النظامي</span><span class="sc-date" dir="ltr">10/7/2046</span></span>
+        <span class="sc-tiles"><span class="sc-tile"><span class="sc-label">سن التقاعد</span>61 سنة و4 أشهر</span><span class="sc-tile"><span class="sc-label">التقاعد المبكر</span>324 شهراً</span></span>
+      </a>
+    </div>
+  </div>
 </section>
 
-<section class="explain" id="tools">
-  <h2>The tools</h2>
-  <ul class="tools">
-<li class="tool card">
+<section class="section explain" id="tools">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Live now</p>
+      <h2 class="section-title">The tools</h2>
+    </div>
+    <ul class="tools">
+<li class="tool card tool-car">
+<span class="tool-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 17h2a1 1 0 0 0 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4a1 1 0 0 0 1 1h2"/><path d="M5 17a2 2 0 1 0 4 0 2 2 0 1 0-4 0"/><path d="M9 17h6"/><path d="M15 17a2 2 0 1 0 4 0 2 2 0 1 0-4 0"/></svg></span>
 <h3><a class="tool-link" href="https://car.loopnode.live/">Does My Car Qualify?</a></h3>
-<p class="market">United States · English · <span class="host">car.loopnode.live</span></p>
-<p>The 2025–2028 car-loan interest deduction: paste a VIN to check what the VIN can answer — where the car was finally assembled and its gross vehicle weight — then work through the questions it cannot, and estimate the deduction.</p>
+<p class="market"><span class="lang-badge">EN</span>United States · <span class="host">car.loopnode.live</span></p>
+<p>Paste a VIN to check the 2025–2028 car-loan interest deduction: US assembly, weight and the rest.</p>
+<span class="tool-ui" aria-hidden="true"><span class="ui-step"><b>1</b>Paste a VIN</span><span class="ui-step"><b>2</b>NHTSA decodes it</span><span class="ui-step"><b>3</b>Deduction check</span></span>
+<span class="tool-cta" aria-hidden="true">Open tool <span class="tool-go"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></span>
 </li>
-<li class="tool card">
+<li class="tool card tool-taqaud">
+<span class="tool-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg></span>
 <h3><a class="tool-link" href="https://taqaud.loopnode.live/"><span lang="ar" dir="rtl">حاسبة التقاعد</span></a></h3>
-<p class="market">Saudi Arabia · Arabic · <span class="host">taqaud.loopnode.live</span></p>
-<p>Saudi retirement age and estimated pension after the July 2024 amendments to the social-insurance rules — every step shown, next to the official table it comes from.</p>
+<p class="market"><span class="lang-badge" lang="ar">عربي</span>Saudi Arabia · <span class="host">taqaud.loopnode.live</span></p>
+<p>Your retirement date and estimated pension after the July 2024 rules, each step from the official table.</p>
+<span class="tool-ui" aria-hidden="true" dir="rtl"><span class="ui-step" lang="ar"><b>1</b>تاريخ الميلاد</span><span class="ui-step" lang="ar"><b>2</b>مدة الاشتراك</span><span class="ui-step" lang="ar"><b>3</b>التاريخ والمعاش</span></span>
+<span class="tool-cta" aria-hidden="true">Open tool <span class="tool-go"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></span>
 </li>
 </ul>
+  </div>
 </section>
 
-<section class="card explain" id="how">
-  <h2>How we build them</h2>
-  <ul>
-    <li><strong>Your data stays with you.</strong> The tools calculate on your device. The Saudi retirement calculator sends nothing anywhere. The car checker sends one thing — the VIN you type — straight from your browser to the public VIN decoder run by the US National Highway Traffic Safety Administration; it never reaches us.</li>
-    <li><strong>Every rule has a source.</strong> We copy rules and tables from the official pages that publish them, keep the exact wording, and show the link and the date we checked it next to the result.</li>
-    <li><strong>The official examples are our tests.</strong> Before a tool is released, it has to reproduce the worked examples that the agency itself publishes. If it cannot, it does not ship.</li>
-    <li><strong>What we could not verify, we leave out.</strong> If a rule is not stated on a primary source we can read, the tool says so instead of guessing.</li>
-    <li><strong>Estimates, not advice.</strong> A tool helps you understand your situation and prepare your questions. The agency's own decision is the one that counts.</li>
-    <li><strong>Independent.</strong> LoopNode is not affiliated with any government agency and does not use any agency's name, logo or look as its own.</li>
-  </ul>
+<section class="metrics-band" aria-label="LoopNode in numbers">
+  <div class="container">
+    <dl class="metrics">
+      <div><dt>tools live, each answering one question</dt><dd>2</dd></div>
+      <div><dt>languages, each read in its own direction</dt><dd>2</dd></div>
+      <div><dt>accounts, trackers or cookies of our own</dt><dd>0</dd></div>
+      <div><dt>of rules linked to a dated official source</dt><dd>100%</dd></div>
+    </dl>
+  </div>
 </section>
 
-<section class="card explain" id="why">
-  <h2>Why one small site per tool</h2>
+<section class="section band-dark" id="how">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Our standards</p>
+      <h2 class="section-title">How we build them</h2>
+    </div>
+    <ul class="features">
+      <li class="feature"><h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Your data stays with you</h3><p>Tools calculate on your device; the car checker sends only the VIN, straight to NHTSA.</p></li>
+      <li class="feature"><h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Every rule has a source</h3><p>Copied word for word from the official page, with the link and the date we checked it.</p></li>
+      <li class="feature"><h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Official examples are our tests</h3><p>A tool ships only when it reproduces the agency's own worked examples.</p></li>
+      <li class="feature"><h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z"/><path d="M4.9 4.9l14.2 14.2"/></svg>What we couldn't verify, we leave out</h3><p>If no primary source states a rule, the tool says so instead of guessing.</p></li>
+      <li class="feature"><h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Estimates, not advice</h3><p>Results help you understand and prepare; the agency's decision is the one that counts.</p></li>
+      <li class="feature"><h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>Independent</h3><p>Not affiliated with any government agency, and never using an agency's name, logo or look.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="more">
+  <div class="container pair">
+    <div class="card prose" id="why">
+      <h2>Why one small site per tool</h2>
   <p>People search for a specific answer — “does my car qualify for the loan interest deduction?”, “<bdi lang="ar" dir="rtl">متى أتقاعد؟</bdi>” — not for a toolbox. A site that does one thing can explain that one thing properly: what the rule says, a worked example, what the tool cannot know, and a short FAQ. It loads fast on a phone and reads naturally in its own language and direction.</p>
   <p>This page is the front door: it lists every tool and holds the policies that apply to all of them.</p>
-</section>
-
-<section class="card explain" id="mistake">
-  <h2>Found a mistake?</h2>
-  <p>Rules change and we can get things wrong. If a result looks off, <a href="./contact.html">tell us</a> what you entered and what you expected, with a link to the official source if you have one. We correct errors quickly and update the check date on the page.</p>
+    </div>
+    <div class="cta-band" id="mistake">
+      <div>
+        <h2>Found a mistake?</h2>
+        <p>Rules change and we can get things wrong. If a result looks off, <a href="./contact.html">tell us</a> what you entered and what you expected, with a link to the official source if you have one. We correct errors quickly and update the check date on the page.</p>
+      </div>
+      <a class="btn btn-secondary" href="./contact.html">Contact us</a>
+    </div>
+  </div>
 </section>
 
 </main>
 <footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<p class="footer-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" class="logo-bg"/><circle cx="14" cy="17" r="7" class="logo-loop"/><circle cx="21" cy="10" r="3.6" class="logo-node"/></svg><span>LoopNode</span></p>
 <p>LoopNode makes independent tools. We are not affiliated with any government agency; results are estimates, not advice.</p>
-<p class="footer-links"><a class="quiet" href="./about.html">About</a> · <a class="quiet" href="./privacy.html">Privacy</a> · <a class="quiet" href="./contact.html">Contact</a></p>
+</div>
+<nav aria-label="Tools" class="footer-col">
+<p class="footer-h">Tools</p>
+<ul><li><a class="quiet" href="https://car.loopnode.live/">Does My Car Qualify?</a></li><li><a class="quiet" href="https://taqaud.loopnode.live/" lang="ar">حاسبة التقاعد</a></li></ul>
+</nav>
+<nav aria-label="About and legal" class="footer-col">
+<p class="footer-h">LoopNode</p>
+<ul><li><a class="quiet" href="./about.html">About</a></li><li><a class="quiet" href="./privacy.html">Privacy</a></li><li><a class="quiet" href="./contact.html">Contact</a></li></ul>
+</nav>
+</div>
+<div class="container">
+<p class="copy">© 2026 LoopNode · <a href="mailto:uamurtaza.apps@gmail.com">uamurtaza.apps@gmail.com</a></p>
+</div>
 </footer>
 </body>
 </html>

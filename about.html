@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>About LoopNode</title>
 <meta name="description" content="Who makes LoopNode tools, how we check every rule against its official source, and how to tell us when something is wrong.">
@@ -11,6 +11,9 @@
 <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <link rel="canonical" href="https://loopnode.live/about.html">
 <meta property="og:type" content="website">
@@ -27,16 +30,27 @@
 <body>
 <a class="skip" href="#content">Skip to content</a>
 <header class="site-header">
-<p class="brand"><a href="./">LoopNode</a></p>
+<div class="container header-inner">
+<a class="brand" href="./" aria-label="LoopNode Tools — home"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" class="logo-bg"/><circle cx="14" cy="17" r="7" class="logo-loop"/><circle cx="21" cy="10" r="3.6" class="logo-node"/></svg><span class="wordmark">LoopNode</span></a>
 <nav aria-label="Site"><ul><li><a href="./">Tools</a></li><li><a href="./about.html" aria-current="page">About</a></li><li><a href="./privacy.html">Privacy</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
+</div>
 </header>
 <main id="content">
+<div class="page">
+<div class="page-hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container">
+  <div class="page-hero-inner">
+    <p class="eyebrow">Who we are</p>
+    <h1>About LoopNode</h1>
+    <p class="page-lead">LoopNode is the name under which an independent developer publishes small web tools. Each tool lives on its own subdomain of loopnode.live and is written for the people who search for it, in their language.</p>
+  </div>
+  </div>
+</div>
+<div class="container page-body">
 <section class="card explain">
-  <h1>About LoopNode</h1>
-  <p>LoopNode is the name under which an independent developer publishes small web tools. Each tool lives on its own subdomain of loopnode.live and is written for the people who search for it, in their language.</p>
-
   <h2>What we care about</h2>
-  <ul>
+  <ul class="checklist">
     <li><strong>Showing the working.</strong> A number without its steps is hard to trust, so every result comes with the calculation and the rule behind it.</li>
     <li><strong>Primary sources, with dates.</strong> Rules are taken from the official pages that publish them and carry the date they were last checked.</li>
     <li><strong>Privacy by design.</strong> No accounts, no databases, nothing stored. Where a tool must ask an outside service — the car checker asks NHTSA to decode a VIN — it says so plainly.</li>
@@ -52,11 +66,28 @@
   <h2>Corrections</h2>
   <p>If you find an error, <a href="./contact.html">contact us</a>. We fix confirmed errors and update the check date on the affected page.</p>
 </section>
+</div>
 
+</div>
 </main>
 <footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<p class="footer-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" class="logo-bg"/><circle cx="14" cy="17" r="7" class="logo-loop"/><circle cx="21" cy="10" r="3.6" class="logo-node"/></svg><span>LoopNode</span></p>
 <p>LoopNode makes independent tools. We are not affiliated with any government agency; results are estimates, not advice.</p>
-<p class="footer-links"><a class="quiet" href="./about.html">About</a> · <a class="quiet" href="./privacy.html">Privacy</a> · <a class="quiet" href="./contact.html">Contact</a></p>
+</div>
+<nav aria-label="Tools" class="footer-col">
+<p class="footer-h">Tools</p>
+<ul><li><a class="quiet" href="https://car.loopnode.live/">Does My Car Qualify?</a></li><li><a class="quiet" href="https://taqaud.loopnode.live/" lang="ar">حاسبة التقاعد</a></li></ul>
+</nav>
+<nav aria-label="About and legal" class="footer-col">
+<p class="footer-h">LoopNode</p>
+<ul><li><a class="quiet" href="./about.html">About</a></li><li><a class="quiet" href="./privacy.html">Privacy</a></li><li><a class="quiet" href="./contact.html">Contact</a></li></ul>
+</nav>
+</div>
+<div class="container">
+<p class="copy">© 2026 LoopNode · <a href="mailto:uamurtaza.apps@gmail.com">uamurtaza.apps@gmail.com</a></p>
+</div>
 </footer>
 </body>
 </html>
