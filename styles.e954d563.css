@@ -2585,3 +2585,776 @@ main p [lang="ar"] {
 .guide a {
   overflow-wrap: anywhere;
 }
+
+/* ---------- /apps/ — portfolio (DECISIONS hub-portfolio, style 2: bento of colour tiles with real screens) ---------- */
+.apps-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 0 24px;
+  background: var(--bg);
+}
+@media (min-width: 960px) {
+  .apps-hero {
+    padding: 48px 0 32px;
+  }
+}
+.apps-hero-grid {
+  position: relative;
+  display: grid;
+  gap: 20px;
+}
+@media (min-width: 960px) {
+  .apps-hero-grid {
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 48px;
+  }
+}
+.page .apps-hero h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+@media (min-width: 960px) {
+  .page .apps-hero h1 {
+    font-size: 64px;
+  }
+}
+.apps-hero .h1-accent {
+  color: #4f46e5;
+}
+.apps-lead {
+  max-width: 56ch;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+@media (min-width: 960px) {
+  .apps-lead {
+    font-size: 19px;
+  }
+}
+.apps-glance {
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.glance-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.glance-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+.glance-list b {
+  min-width: 1ch;
+  font-variant-numeric: tabular-nums;
+}
+.glance-dev {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+}
+.status-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.dot-live,
+.status-live .status-dot {
+  background: #16a34a;
+}
+.dot-testing,
+.status-testing .status-dot {
+  background: #d97706;
+}
+.dot-review,
+.status-review .status-dot {
+  background: #6366f1;
+}
+.dot-web {
+  background: #0ea5e9;
+}
+.apps-body {
+  padding: 8px 0 96px;
+}
+
+/* the page's lists are layouts, not prose lists: no `.page ul` indent or `.page li` margins */
+.page .bento,
+.page .glance-list,
+.page .app-facts {
+  padding: 0;
+}
+.page .bento > li,
+.page .glance-list li,
+.page .app-facts li {
+  margin: 0;
+}
+/* the bento: one column → two (the wide tile spans both) → 12 columns (wide 6 + tall 3 + tall 3) */
+.bento {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 760px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .app-wide {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 1200px) {
+  .bento {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .app-wide {
+    grid-column: span 6;
+  }
+  .app-tall {
+    grid-column: span 3;
+  }
+}
+
+/* each tile wears its product's own colour (from its icon / store art); dark mode = deeper tints, same hue. Chosen so every
+   pair of tiles is ≥ 24 ΔE apart in both themes (apps.spec checks > 20) and all text on them is ≥ 4.9:1. */
+.app-sound-meter {
+  --t-bg: #a9e7df;
+  --t-bg2: #86d9cd;
+  --t-ink: #032b26;
+  --t-muted: #15453e;
+}
+.app-amber-tasbih {
+  --t-bg: #fbe4b0;
+  --t-bg2: #f3c46f;
+  --t-ink: #352002;
+  --t-muted: #553708;
+}
+/* Candela: its ring's own range, moonlight blue → sunlight amber */
+.app-candela {
+  --t-bg: #e4ddf7;
+  --t-bg2: #ffdcb0;
+  --t-bg0: #d4d9ff;
+  --t-ink: #1c1838;
+  --t-muted: #37305e;
+}
+/* the two web tools keep the colours of their own sites (DESIGN v2): car deep teal + lime, taqaud mint + deep green */
+.app-car {
+  --t-bg: #0e2a24;
+  --t-bg2: #133a31;
+  --t-ink: #ecfdf5;
+  --t-muted: #b6d9c8;
+  --t-link: #b8f36b;
+  --t-chip: rgb(0 0 0 / 0.3);
+}
+.app-taqaud {
+  --t-bg: #3ddbb0;
+  --t-bg2: #2fc9a0;
+  --t-ink: #07352b;
+  --t-muted: #0b4a3a;
+}
+.app-headerhermit {
+  --t-bg: #ffa066;
+  --t-bg2: #ff8a4a;
+  --t-ink: #2b1204;
+  --t-muted: #4a2208;
+}
+@media (prefers-color-scheme: dark) {
+  .app-sound-meter {
+    --t-bg: #12605a;
+    --t-bg2: #0d4843;
+    --t-ink: #dcf8f3;
+    --t-muted: #a8dcd4;
+  }
+  .app-amber-tasbih {
+    --t-bg: #3b2d0c;
+    --t-bg2: #271d07;
+    --t-ink: #fbe6b8;
+    --t-muted: #dcc08a;
+  }
+  .app-candela {
+    --t-bg: #2b2450;
+    --t-bg0: #1f1f48;
+    --t-bg2: #3a2812;
+    --t-ink: #ebe8ff;
+    --t-muted: #c7c1ea;
+  }
+  .app-headerhermit {
+    --t-bg: #6b2a14;
+    --t-bg2: #4d1d0c;
+    --t-ink: #ffe3d1;
+    --t-muted: #f5bd9c;
+  }
+  .app-sound-meter,
+  .app-amber-tasbih,
+  .app-candela,
+  .app-headerhermit {
+    --t-chip: rgb(0 0 0 / 0.3);
+  }
+  .apps-hero .h1-accent {
+    color: #a5b4fc;
+  }
+}
+.app-tile {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  border-radius: 28px;
+  background-color: var(--t-bg);
+  background-image: var(--t-grad, linear-gradient(165deg, var(--t-bg) 0%, var(--t-bg2) 100%));
+  color: var(--t-ink);
+}
+/* Candela's three-stop gradient is a token, so only tiles, the product hero and screen panels paint it */
+.app-candela {
+  --t-grad: linear-gradient(165deg, var(--t-bg0) 0%, var(--t-bg) 45%, var(--t-bg2) 100%);
+}
+/* clip, not hidden: a hidden box is still a scroll container, so scrollIntoView / focus / find-in-page could scroll the
+   screen inside its tile (seen in e2e 2026-09-30). Browsers without `clip` keep `hidden`. */
+@supports (overflow: clip) {
+  .app-tile,
+  .phone {
+    overflow: clip;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .app-tile {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  }
+}
+.app-copy {
+  padding: 24px 24px 0;
+}
+@media (min-width: 960px) {
+  .app-copy {
+    padding: 28px 28px 0;
+  }
+}
+.app-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.app-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px -6px rgb(0 0 0 / 0.35);
+}
+.app-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--t-chip, rgb(255 255 255 / 0.72));
+  color: var(--t-ink);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.page .app-name {
+  margin: 0 0 4px;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.app-where {
+  margin: 0 0 12px;
+  color: var(--t-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.app-blurb {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.app-facts {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.app-facts li {
+  padding: 2px 10px;
+  border: 1px solid color-mix(in srgb, var(--t-ink) 24%, transparent);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+/* the Google Play badge keeps ≥ ¼ of its height (10px) clear on every side: the row gap is 16px */
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.play-badge {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 7px;
+}
+.play-badge img {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+.app-langs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: -6px 0 18px;
+  color: var(--t-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.app-langs .icon {
+  flex: none;
+  width: 15px;
+  height: 15px;
+}
+.app-test {
+  margin: 0;
+  font-size: 14px;
+}
+.app-test a {
+  color: var(--t-ink);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.app-test a:hover {
+  color: var(--t-ink);
+  text-decoration-thickness: 2px;
+}
+/* the real screen, in a drawn phone frame that runs off the bottom of the tile */
+.app-screen {
+  position: relative;
+  flex: 1 0 260px;
+  margin-top: 8px;
+}
+.phone {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  width: 224px;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 30px 30px 0 0;
+  background: #000;
+  /* the bezel is a shadow, not a border, so the screen keeps its exact 920:1910 ratio */
+  box-shadow:
+    0 0 0 8px #0b0d10,
+    0 28px 56px -12px rgb(0 0 0 / 0.45);
+}
+.app-screen-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 760px) {
+  .app-wide {
+    flex-direction: row;
+  }
+  .app-wide .app-copy {
+    flex: 1 1 54%;
+    padding: 32px 12px 32px 32px;
+  }
+  .page .app-wide .app-name {
+    font-size: 40px;
+  }
+  .app-wide .app-screen {
+    flex: 0 0 46%;
+    margin: 0;
+  }
+  /* sized from the tile's height (so it always runs off the bottom, however tall the row is) and anchored left,
+     so a tall row lets it run off the right edge too */
+  .app-wide .phone {
+    top: 48px;
+    bottom: -48px;
+    left: 28px;
+    width: auto;
+    aspect-ratio: 920 / 1910;
+    transform: none;
+  }
+  .app-wide .app-screen-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+/* tall tiles: the screen leads; facts read as one quiet line instead of chips */
+.page .app-tall .app-name {
+  font-size: 28px;
+}
+.app-tall .app-blurb {
+  font-size: 15px;
+}
+.app-tall .app-facts {
+  flex-direction: column;
+  gap: 2px;
+  color: var(--t-muted);
+}
+.app-tall .app-facts li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+}
+.app-tall .app-facts li::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateY(-2px);
+}
+/* phones: a compact status grid so the first tile starts above the fold */
+@media (max-width: 599px) {
+  .apps-hero .eyebrow {
+    display: none;
+  }
+  .page .apps-hero h1 {
+    font-size: 38px;
+  }
+  .apps-lead {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .apps-hero-grid {
+    gap: 14px;
+  }
+  .app-blurb {
+    font-size: 15px;
+  }
+  .apps-glance {
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+  .glance-list li {
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .glance-dev {
+    margin-top: 8px;
+    padding-top: 8px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}
+
+/* ---------- /apps/ — full page: links, web-tool tiles, the extension's browser window ---------- */
+.page .app-name a {
+  color: inherit;
+  text-decoration: none;
+}
+.page .app-name a:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.app-car .app-name a {
+  color: var(--t-link);
+}
+.app-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid color-mix(in srgb, var(--t-ink) 35%, transparent);
+  border-radius: 999px;
+  color: var(--t-ink);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.app-more:hover {
+  color: var(--t-ink);
+  background: color-mix(in srgb, var(--t-ink) 10%, transparent);
+}
+.app-more .icon {
+  width: 16px;
+  height: 16px;
+}
+.app-open {
+  border-color: var(--t-link, var(--t-ink));
+  color: var(--t-link, var(--t-ink));
+}
+.app-open:hover {
+  color: var(--t-link, var(--t-ink));
+}
+.app-test + .app-actions {
+  margin-top: 12px;
+}
+.app-guides {
+  margin: 12px 0 0;
+  color: var(--t-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.app-guides a {
+  color: var(--t-ink);
+}
+.app-guides a:hover {
+  color: var(--t-ink);
+}
+/* the extension: a browser window instead of a phone, under the copy, running off the bottom and right edges */
+.browser {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 520px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.12),
+    0 28px 56px -16px rgb(0 0 0 / 0.4);
+}
+.browser-bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  background: #e8eaed;
+}
+.browser-bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c4c7cc;
+}
+.frame-browser .app-screen {
+  flex: 1 0 280px;
+}
+@media (min-width: 760px) {
+  .app-wide.frame-browser {
+    flex-direction: column;
+  }
+  .app-wide.frame-browser .app-copy {
+    flex: none;
+    padding: 28px 28px 0;
+  }
+  .app-wide.frame-browser .app-screen {
+    flex: 1 0 280px;
+  }
+  .frame-browser .browser {
+    left: 28px;
+    width: 640px;
+  }
+}
+@supports (overflow: clip) {
+  .browser {
+    overflow: clip;
+  }
+}
+
+/* ---------- product pages (/apps/<slug>.html) ---------- */
+.product-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 0 0;
+  background-color: var(--t-bg);
+  background-image: var(--t-grad, linear-gradient(165deg, var(--t-bg) 0%, var(--t-bg2) 100%));
+  color: var(--t-ink);
+}
+@supports (overflow: clip) {
+  .product-hero {
+    overflow: clip;
+  }
+}
+.product-hero-grid {
+  display: grid;
+  gap: 8px;
+}
+@media (min-width: 960px) {
+  .product-hero {
+    padding-top: 48px;
+  }
+  .product-hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 48px;
+    min-height: 520px;
+  }
+}
+.product-hero-copy {
+  padding-bottom: 40px;
+}
+.product-hero .crumbs,
+.product-hero .crumbs a {
+  color: var(--t-ink);
+}
+.page .product-hero h1 {
+  margin: 0 0 6px;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+@media (min-width: 960px) {
+  .page .product-hero h1 {
+    font-size: 56px;
+  }
+}
+.product-lead {
+  max-width: 56ch;
+  margin: 0 0 20px;
+  font-size: 18px;
+}
+.product-screen {
+  min-height: 320px;
+}
+.product-screen .phone {
+  width: 240px;
+}
+@media (min-width: 960px) {
+  .product-screen .phone {
+    top: 0;
+    width: 300px;
+  }
+  /* wide enough (≥ the band's 520px min height) to run off the band's bottom and the page's right edge */
+  .product-screen .browser {
+    top: 0;
+    left: 0;
+    width: 960px;
+  }
+}
+.product-note {
+  padding: 12px 16px;
+  border: 1px solid var(--warn-line);
+  border-radius: var(--r-input);
+  background: var(--warn-bg);
+}
+.product-shots {
+  margin-top: 48px;
+}
+.page .product-shots h2 {
+  margin: 0 0 20px;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+.page .shots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.page .shots-browser {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
+}
+.page .shots > li {
+  margin: 0;
+}
+.shot {
+  margin: 0;
+}
+.shot .phone,
+.shot .browser {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+.shot .phone {
+  width: 224px;
+  margin: 28px auto 0;
+}
+.shot .browser {
+  width: 100%;
+  border-radius: 12px;
+}
+.shot-frame {
+  border-radius: 20px;
+  background-color: var(--t-bg);
+  background-image: var(--t-grad, linear-gradient(165deg, var(--t-bg) 0%, var(--t-bg2) 100%));
+}
+/* phones sit on the product's colour and run off the panel's bottom edge, like the tiles */
+.shots-phone .shot-frame {
+  height: 420px;
+  overflow: hidden;
+}
+.shots-browser .shot-frame {
+  padding: 16px;
+}
+@supports (overflow: clip) {
+  .shots-phone .shot-frame {
+    overflow: clip;
+  }
+}
+.shot figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.product-more {
+  margin: 48px 0 0;
+}
+.page .product-more ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.page .product-more li {
+  margin: 0;
+}
+.product-more a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* footer: brand · Tools · Apps · Guides · LoopNode */
+@media (min-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1.3fr 0.8fr;
+  }
+}
+
+/* product hero: the status chip sits beside the icon, not at the far edge */
+.product-hero .app-top {
+  justify-content: flex-start;
+}

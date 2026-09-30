@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>HeaderHermit — header profiles and JSON API mocks for Chrome, in review</title>
+<meta name="description" content="HeaderHermit switches HTTP request and response headers by profile and mocks JSON APIs on the sites you allow. In review at the Chrome Web Store.">
+<meta name="google-adsense-account" content="ca-pub-4816275844541583">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.e954d563.css">
+<link rel="canonical" href="https://loopnode.live/apps/headerhermit.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="LoopNode Tools">
+<meta property="og:title" content="HeaderHermit — header profiles and JSON API mocks for Chrome, in review">
+<meta property="og:description" content="HeaderHermit switches HTTP request and response headers by profile and mocks JSON APIs on the sites you allow. In review at the Chrome Web Store.">
+<meta property="og:url" content="https://loopnode.live/apps/headerhermit.html">
+<meta property="og:image" content="https://loopnode.live/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HeaderHermit","description":"HeaderHermit switches HTTP request and response headers by profile and mocks JSON APIs on the sites you allow. In review at the Chrome Web Store.","applicationCategory":"DeveloperApplication","operatingSystem":"Chrome","url":"https://loopnode.live/apps/headerhermit.html","inLanguage":["en"]}</script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="/" aria-label="LoopNode Tools — home"><img class="logo-mark" src="/img/loopnode-64.png" srcset="/img/loopnode-64.png 2x, /img/loopnode-96.png 3x" width="32" height="32" alt="LoopNode logo"><span class="wordmark">LoopNode</span></a>
+<nav aria-label="Site"><ul><li><a href="/">Tools</a></li><li><a href="/apps/" aria-current="true">Apps</a></li><li><a href="/guides/">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/contact.html">Contact</a></li></ul></nav>
+</div>
+</header>
+<main id="content">
+<div class="page">
+<section class="product-hero app-headerhermit frame-browser">
+  <div class="container product-hero-grid">
+    <div class="product-hero-copy">
+      <p class="crumbs"><a href="/apps/">Apps</a> <span aria-hidden="true">/</span> HeaderHermit</p>
+      <div class="app-top">
+        <img class="app-icon" src="/img/apps/headerhermit-icon.webp" width="56" height="56" alt="HeaderHermit extension icon">
+        <p class="app-status status-review"><span class="status-dot" aria-hidden="true"></span>In review</p>
+      </div>
+      <h1>HeaderHermit</h1>
+      <p class="app-where">Chrome extension · Chrome Web Store review</p>
+      <p class="product-lead">A Chrome extension for web developers: switch header profiles from the toolbar, and mock JSON APIs that aren’t ready yet.</p>
+      <p class="app-test">In review at the Chrome Web Store. The install link will be added here once it is approved.</p>
+    </div>
+    <div class="app-screen product-screen"><div class="browser"><span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span><img class="app-screen-img" src="/img/apps/headerhermit-screen-1280.webp" srcset="/img/apps/headerhermit-screen-640.webp 640w, /img/apps/headerhermit-screen-1280.webp 1280w" sizes="(min-width: 960px) 960px, (min-width: 760px) 640px, 520px" width="1280" height="704" alt="The HeaderHermit profile editor for Staging: request rules for X-Env, Authorization and X-Feature-Flags, a CORS response header, Server removed, and a GET mock" decoding="async"></div></div>
+  </div>
+</section>
+<div class="container page-body">
+<article class="card explain product-body">
+<h2>What it does</h2>
+<p>HeaderHermit keeps header profiles, such as Local Dev, Staging and Production, and switches between them from the toolbar, where a badge shows which one is on. Each profile holds rules that set, append or remove request and response headers, limited to the URLs, resource types, methods and domains you choose. Five presets start a profile quickly, from Allow CORS to Mock a JSON API.</p>
+<p>A profile can also mock a JSON API that isn’t ready yet. A mock answers the page’s own fetch() and async XMLHttpRequest calls with the status, delay and body you set. It does not reach synchronous XHR, workers, or image and script loads, and a tab that was already open needs a reload.</p>
+<p>Header rules run on Chrome’s built-in declarativeNetRequest engine, in the order you list them; the top rule wins. Mistakes are shown at the field when you leave it, and a rule with a mistake is skipped rather than applied. The extension runs only on the sites you allow, one by one or all at once, and makes no network requests of its own.</p>
+<h2>Who it is for</h2>
+<ul><li>Front-end and web developers switching headers between local, staging and production</li><li>QA and test engineers who need auth, feature-flag or CORS headers on test sites</li><li>Developers building a screen against an API endpoint that isn’t ready yet</li><li>People moving their header profiles over from a ModHeader JSON export</li></ul>
+<h2>Features</h2>
+<ul class="feature-list"><li>Switch between profiles, or turn all off, from the toolbar popup</li><li>The toolbar badge shows the active profile’s initials, or ! on errors</li><li>Five presets, from Allow CORS to Mock a JSON API</li><li>Set, append or remove request and response headers</li><li>Limit a profile by URL filter or regex, and exclude URLs</li><li>Filter by resource type, method, and request or initiator domain</li><li>Rules apply in list order; the top rule wins</li><li>Mistakes are shown at the field, and a rule with one is skipped</li><li>Warns when a rule lower in the list can never apply</li><li>Suggests common header names and values</li><li>Header rules run on Chrome’s declarativeNetRequest engine</li><li>Mocks answer the page’s own fetch() and async XMLHttpRequest calls</li><li>A mock sets the method, URL, status (200–599), delay (up to 60 s) and body</li><li>Not mocked: synchronous XHR, workers, images and scripts</li><li>Export profiles as JSON; import HeaderHermit or ModHeader JSON</li><li>Runs only on sites you allow</li><li>No account, no analytics, no remote code</li></ul>
+<h2>Languages</h2>
+<p>English.</p>
+<h2>Privacy</h2>
+<p>There is no account, no analytics and no remote code. Profiles stay in the browser’s local extension storage; header rules change the requests your pages send, only on the sites you allow. <a href="https://uzairalimurtaza.github.io/headerhermit/privacy/">Read the HeaderHermit privacy policy</a>.</p>
+<p class="product-note">HeaderHermit is in review at the Chrome Web Store, so it cannot be installed yet. When it is approved, this page will link to it. HeaderHermit is not affiliated with ModHeader.</p>
+</article>
+<section class="product-shots app-headerhermit" aria-labelledby="shots-h">
+<h2 id="shots-h">Screens from HeaderHermit</h2>
+<ul class="shots shots-browser">
+<li><figure class="shot"><div class="shot-frame"><div class="browser"><span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span><img class="app-screen-img" src="/img/apps/headerhermit-1-1280.webp" srcset="/img/apps/headerhermit-1-640.webp 640w, /img/apps/headerhermit-1-1280.webp 1280w" sizes="(min-width: 1000px) 580px, 92vw" width="1280" height="704" alt="The HeaderHermit popup over a demo orders app: profiles Off, Local Dev, Staging (on, 6 rules) and Production, with the toolbar badge reading STA" loading="lazy" decoding="async"></div></div><figcaption>Switch profiles from the toolbar</figcaption></figure></li>
+<li><figure class="shot"><div class="shot-frame"><div class="browser"><span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span><img class="app-screen-img" src="/img/apps/headerhermit-3-1280.webp" srcset="/img/apps/headerhermit-3-640.webp 640w, /img/apps/headerhermit-3-1280.webp 1280w" sizes="(min-width: 1000px) 580px, 92vw" width="1280" height="704" alt="A GET /api/orders mock with status 200, a 300 ms delay and a JSON body, beside a demo app table filled from that mocked response" loading="lazy" decoding="async"></div></div><figcaption>Mock an API that isn’t ready yet</figcaption></figure></li>
+<li><figure class="shot"><div class="shot-frame"><div class="browser"><span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span><img class="app-screen-img" src="/img/apps/headerhermit-4-1280.webp" srcset="/img/apps/headerhermit-4-640.webp 640w, /img/apps/headerhermit-4-1280.webp 1280w" sizes="(min-width: 1000px) 580px, 92vw" width="1280" height="704" alt="The Settings tab: allowed sites with Remove buttons, Import and Export all buttons, and an import report of 3 profiles with two warnings" loading="lazy" decoding="async"></div></div><figcaption>Allowed sites, import and export</figcaption></figure></li>
+<li><figure class="shot"><div class="shot-frame"><div class="browser"><span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span><img class="app-screen-img" src="/img/apps/headerhermit-5-1280.webp" srcset="/img/apps/headerhermit-5-640.webp 640w, /img/apps/headerhermit-5-1280.webp 1280w" sizes="(min-width: 1000px) 580px, 92vw" width="1280" height="704" alt="The popup with seven profiles, the Sites panel with per-site Remove and Allow on all sites, and a checklist: no account, no analytics" loading="lazy" decoding="async"></div></div><figcaption>Runs only on the sites you allow</figcaption></figure></li>
+</ul>
+</section>
+<nav class="product-more" aria-label="More from LoopNode">
+<p class="footer-h">More from LoopNode</p>
+<ul><li><a href="/apps/sound-meter.html">Sound Meter</a></li><li><a href="/apps/amber-tasbih.html">Amber Tasbih</a></li><li><a href="/apps/candela.html">Candela</a></li><li><a href="/apps/">Everything we make</a></li></ul>
+</nav>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<p class="footer-brand"><img class="logo-mark" src="/img/loopnode-64.png" srcset="/img/loopnode-64.png 2x, /img/loopnode-96.png 3x" width="32" height="32" alt="LoopNode logo"><span>LoopNode</span></p>
+<p>LoopNode makes independent tools. We are not affiliated with any government agency; results are estimates, not advice.</p>
+</div>
+<nav aria-label="Tools" class="footer-col">
+<p class="footer-h">Tools</p>
+<ul><li><a class="quiet" href="https://car.loopnode.live/">Does My Car Qualify?</a></li><li><a class="quiet" href="https://taqaud.loopnode.live/" lang="ar">حاسبة التقاعد</a></li></ul>
+</nav>
+<nav aria-label="Apps" class="footer-col">
+<p class="footer-h">Apps</p>
+<ul><li><a class="quiet" href="/apps/sound-meter.html">Sound Meter</a></li><li><a class="quiet" href="/apps/amber-tasbih.html">Amber Tasbih</a></li><li><a class="quiet" href="/apps/candela.html">Candela</a></li><li><a class="quiet" href="/apps/headerhermit.html">HeaderHermit</a></li><li><a class="quiet" href="/apps/">All apps and tools</a></li></ul>
+</nav>
+<nav aria-label="Guides" class="footer-col">
+<p class="footer-h">Guides</p>
+<ul><li><a class="quiet" href="/guides/car-loan-interest-deduction.html">Car loan interest deduction</a></li><li><a class="quiet" href="/guides/vin-final-assembly.html">Where was my car assembled?</a></li><li><a class="quiet" href="/guides/saudi-retirement-age-2024.html">Saudi retirement age (2024)</a></li><li><a class="quiet" href="/guides/saudi-early-retirement.html">Saudi early retirement</a></li><li><a class="quiet" href="/guides/how-we-build-and-check.html">How we build and check</a></li></ul>
+</nav>
+<nav aria-label="About and legal" class="footer-col">
+<p class="footer-h">LoopNode</p>
+<ul><li><a class="quiet" href="/about.html">About</a></li><li><a class="quiet" href="/privacy.html">Privacy</a></li><li><a class="quiet" href="/contact.html">Contact</a></li></ul>
+</nav>
+</div>
+<div class="container">
+<p class="copy">© 2026 LoopNode · <a href="mailto:uamurtaza.apps@gmail.com">uamurtaza.apps@gmail.com</a></p>
+</div>
+</footer>
+</body>
+</html>
