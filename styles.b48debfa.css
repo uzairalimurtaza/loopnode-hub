@@ -3157,7 +3157,10 @@ main p [lang="ar"] {
   background: #c4c7cc;
 }
 .frame-browser .app-screen {
-  flex: 1 0 280px;
+  /* a fixed-height area pinned to the tile's bottom: the window (≥ 312px tall) always runs off it, however tall the
+     copy above gets (the copy grew when the store badge replaced the in-review note, 2026-09-30) */
+  flex: 0 0 280px;
+  margin-top: auto;
 }
 @media (min-width: 760px) {
   .app-wide.frame-browser {
@@ -3167,8 +3170,9 @@ main p [lang="ar"] {
     flex: none;
     padding: 28px 28px 0;
   }
+  /* 360px: the 378px window (640 wide) still overhangs by 34px, and less tile is left empty above it */
   .app-wide.frame-browser .app-screen {
-    flex: 1 0 280px;
+    flex: 0 0 360px;
   }
   .frame-browser .browser {
     left: 28px;
@@ -3357,4 +3361,16 @@ main p [lang="ar"] {
 /* product hero: the status chip sits beside the icon, not at the far edge */
 .product-hero .app-top {
   justify-content: flex-start;
+}
+
+/* the Chrome Web Store badge: Google's bordered PNG, only resized (170×48 = the 340×96 file at 2x) */
+.cws-badge {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 6px;
+}
+.cws-badge img {
+  display: block;
+  width: auto;
+  height: 48px;
 }
