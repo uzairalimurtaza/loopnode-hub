@@ -213,19 +213,6 @@ bdi {
   height: 32px;
   flex: none;
 }
-.logo-bg {
-  fill: var(--accent);
-}
-.logo-loop {
-  fill: none;
-  stroke: var(--on-accent);
-  stroke-width: 3;
-}
-.logo-node {
-  fill: var(--on-accent);
-  stroke: var(--accent);
-  stroke-width: 2;
-}
 .wordmark {
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 700;
@@ -1963,4 +1950,54 @@ main {
   .hero.v2 h1 .h1-accent {
     display: block;
   }
+}
+
+/* ---------- Verification 1 (2026-09-30) ---------- */
+/* #5 the stack fills its column: physical sides, because the Arabic card carries dir="rtl" and its logical
+   inset-inline-end resolved to the LEFT, so both cards sat on the left (visible once the container was 1280px). */
+@media (min-width: 960px) {
+  .sc-car,
+  .sc-car:hover {
+    left: 0;
+    right: auto;
+  }
+  .sc-taqaud,
+  .sc-taqaud:hover {
+    right: 0;
+    left: auto;
+  }
+}
+/* #6 Privacy chips: a chip row, not a content list (no indent, no item margins) — they line up with the h1 */
+.page .page-chips {
+  padding: 0;
+}
+.page .page-chips li {
+  margin: 0;
+}
+/* #7 inline Arabic inside English text: Plex Arabic's taller metrics raised its line by ~3px */
+main p [lang="ar"] {
+  line-height: 1;
+}
+/* #5 follow-up: with the cards apart, the Arabic card's corner met "$10,000 a y|ear" — "a year" goes under the number */
+@media (min-width: 960px) {
+  .sc-big .sc-small:last-child {
+    display: block;
+    margin-inline-start: 0;
+  }
+}
+
+/* ---------- Icons v3 (owner approved 2026-09-30) ---------- */
+/* the LoopNode mark is the 3D clay image (its own light tile), and each tool card shows the tool's own app icon */
+.logo-mark {
+  display: block;
+  border-radius: 8px;
+}
+.tool.card .tool-icon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 18px;
+  border-radius: 13px;
+  background: none;
+  box-shadow: 0 10px 22px -12px rgb(0 0 0 / 0.55);
 }
