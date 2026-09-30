@@ -553,12 +553,17 @@ bdi {
   inset: 0;
   border-radius: var(--r-card);
 }
-.tool-link:focus-visible {
-  outline: none;
-}
-.tool-link:focus-visible::after {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
+/* Red team 2026-09-30 (#1): the card clips its children (overflow: hidden), so a ring on the stretched link was never seen.
+   The ring goes on the card itself: an element's own outline is not clipped by its own overflow. Browsers without :has()
+   keep the global :focus-visible ring on the title link. */
+@supports selector(:has(*)) {
+  .tool-link:focus-visible {
+    outline: none;
+  }
+  .tool:has(.tool-link:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
 }
 [lang="ar"] {
   font-family: "IBM Plex Sans Arabic", "Geeza Pro", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
@@ -1549,8 +1554,11 @@ main {
 .tool.tool-car > p:not(.market) {
   color: #d3e6df;
 }
-/* mini product UI: the tool's flow as a three-step stepper (equal columns, so it never wraps mid-flow) */
+/* mini product UI: the tool's flow as a three-step stepper (equal columns, so it never wraps mid-flow).
+   Red team 2026-09-30 (#6): it is decoration (aria-hidden), and its positioned steps sat above the stretched link and ate
+   the clicks — pointer-events: none lets a click anywhere on the strip open the tool. */
 .tool-ui {
+  pointer-events: none;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
@@ -2000,4 +2008,27 @@ main p [lang="ar"] {
   border-radius: 13px;
   background: none;
   box-shadow: 0 10px 22px -12px rgb(0 0 0 / 0.55);
+}
+
+/* ---------- Red team fixes (2026-09-30) ---------- */
+/* #2 «عربي» badge: `main p [lang="ar"] { line-height: 1 }` (meant for inline Arabic in English text) squeezed the pill to
+   14px, so Plex Arabic's 15px glyph box crossed the border. The badge keeps the pill's own line height, like the EN one. */
+.lang-badge[lang="ar"] {
+  line-height: 1.7;
+}
+/* #5 280–340px phones: the four nav links overflowed the header by up to 22px */
+@media (max-width: 340px) {
+  .container {
+    padding-inline: 12px;
+  }
+  .header-inner {
+    gap: 8px;
+  }
+  .site-header nav ul {
+    gap: 0;
+  }
+  .site-header nav a {
+    padding: 0 5px;
+    font-size: 13px;
+  }
 }
