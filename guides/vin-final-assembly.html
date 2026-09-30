@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>How to tell where your car was assembled from its VIN — LoopNode Guides</title>
+<meta name="description" content="Find a car's final assembly plant from its VIN: the 17 positions, the check digit, NHTSA's decoder and the window sticker, with two 2026 RAV4s from different plants.">
+<meta name="google-adsense-account" content="ca-pub-4816275844541583">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.c453456f.css">
+<link rel="canonical" href="https://loopnode.live/guides/vin-final-assembly.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="LoopNode Tools">
+<meta property="og:title" content="How to tell where your car was assembled from its VIN — LoopNode Guides">
+<meta property="og:description" content="Find a car's final assembly plant from its VIN: the 17 positions, the check digit, NHTSA's decoder and the window sticker, with two 2026 RAV4s from different plants.">
+<meta property="og:url" content="https://loopnode.live/guides/vin-final-assembly.html">
+<meta property="og:image" content="https://loopnode.live/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to tell where your car was assembled from its VIN","description":"Find a car's final assembly plant from its VIN: the 17 positions, the check digit, NHTSA's decoder and the window sticker, with two 2026 RAV4s from different plants.","inLanguage":"en","author":{"@type":"Person","name":"Uzair Ali Murtaza","url":"https://loopnode.live/about.html"},"publisher":{"@type":"Organization","name":"LoopNode","url":"https://loopnode.live/","logo":{"@type":"ImageObject","url":"https://loopnode.live/icon-512.png"}},"datePublished":"2026-09-30","dateModified":"2026-09-30","mainEntityOfPage":"https://loopnode.live/guides/vin-final-assembly.html","url":"https://loopnode.live/guides/vin-final-assembly.html","image":"https://loopnode.live/og.png"}</script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="/" aria-label="LoopNode Tools — home"><img class="logo-mark" src="/img/loopnode-64.png" srcset="/img/loopnode-64.png 2x, /img/loopnode-96.png 3x" width="32" height="32" alt="LoopNode logo"><span class="wordmark">LoopNode</span></a>
+<nav aria-label="Site"><ul><li><a href="/">Tools</a></li><li><a href="/guides/" aria-current="true">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/contact.html">Contact</a></li></ul></nav>
+</div>
+</header>
+<main id="content">
+<div class="page">
+<div class="page-hero guide-hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container">
+  <div class="page-hero-inner">
+    <p class="crumbs"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> <span class="eyebrow">Vehicles · VIN</span></p>
+    <h1>How to tell where your car was assembled from its VIN</h1>
+    <p class="page-lead">The plant that built your car is written into the 11th character of its VIN — not the first. How to read it, check it with NHTSA’s free decoder, and confirm it on the label in the window.</p>
+    <p class="byline">By Uzair Ali Murtaza · Last reviewed 30 Sep 2026</p>
+  </div>
+  </div>
+</div>
+<div class="container page-body">
+<article class="card explain guide">
+<nav class="toc" aria-label="On this page">
+  <p class="toc-h">On this page</p>
+  <ol>
+    <li><a href="#why">Why the assembly plant matters</a></li>
+    <li><a href="#anatomy">The 17 characters of a VIN</a></li>
+    <li><a href="#two-rav4s">One model, two plants</a></li>
+    <li><a href="#first-character">Why the first character does not decide it</a></li>
+    <li><a href="#decoder">Checking with NHTSA’s decoder</a></li>
+    <li><a href="#label">The label on the vehicle</a></li>
+    <li><a href="#check-digit">The check digit: catching typos</a></li>
+  </ol>
+</nav>
+
+<section class="g-section" id="why">
+  <h2>Why the assembly plant matters</h2>
+  <p>For the 2025–2028 car loan interest deduction, a vehicle only qualifies if its <strong>final assembly</strong> took place in the United States. The regulation defines final assembly as the process by which a manufacturer produces the vehicle at a plant, factory or other place from which it is delivered to a dealer with all the parts needed for it to run <a class="cite" href="#s1" aria-label="Source 1">[1]</a>.</p>
+  <p>You do not have to trace a supply chain to prove it. The rule gives two things you may rely on: the vehicle’s <strong>plant of manufacture as reported in the VIN</strong>, or the <strong>final assembly point reported on the label affixed to the vehicle</strong> <a class="cite" href="#s1" aria-label="Source 1">[1]</a>. This guide shows how to read both. The details of the deduction itself are in <a href="/guides/car-loan-interest-deduction.html">The car loan interest deduction, explained</a>.</p>
+</section>
+
+<section class="g-section" id="anatomy">
+  <h2>The 17 characters of a VIN</h2>
+  <p>A vehicle identification number is 17 characters long, and a federal standard — 49 CFR Part 565 — fixes what each part means <a class="cite" href="#s2" aria-label="Source 2">[2]</a>. You will find it on the dashboard near the windshield, on the driver’s door-jamb label, and on your title and loan papers.</p>
+  <figure class="vin-strip" aria-label="Example VIN 4T36CRAV3TU013521 split into its sections">
+    <span class="vin-part wmi"><b>4T3</b><i>positions 1–3</i><em>manufacturer</em></span>
+    <span class="vin-part vds"><b>6CRAV</b><i>positions 4–8</i><em>vehicle attributes</em></span>
+    <span class="vin-part chk"><b>3</b><i>position 9</i><em>check digit</em></span>
+    <span class="vin-part yr"><b>T</b><i>position 10</i><em>model year</em></span>
+    <span class="vin-part plant"><b>U</b><i>position 11</i><em>plant</em></span>
+    <span class="vin-part ser"><b>013521</b><i>positions 12–17</i><em>serial number</em></span>
+  </figure>
+  <!-- biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable table must be reachable by keyboard (WCAG 2.1.1, axe scrollable-region-focusable) -->
+  <section class="table-wrap" tabindex="0" aria-label="VIN positions and their meaning">
+    <table>
+      <caption>What each part of a VIN means (49 CFR 565.15)</caption>
+      <thead><tr><th scope="col">Positions</th><th scope="col">What they encode</th></tr></thead>
+      <tbody>
+        <tr><td>1–3</td><td>The manufacturer and type of vehicle (the manufacturer identifier)</td></tr>
+        <tr><td>4–8</td><td>Attributes such as make, line, series, body type, engine type and, for trucks and multipurpose vehicles, the weight rating</td></tr>
+        <tr><td>9</td><td>The check digit, calculated from all the other characters</td></tr>
+        <tr><td>10</td><td>The model year (for example S = 2025, T = 2026, V = 2027)</td></tr>
+        <tr><td>11</td><td>The plant of manufacture</td></tr>
+        <tr><td>12–17</td><td>The serial number the manufacturer assigns in production</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <p>One detail trips people up: the plant character in position 11 is the manufacturer’s own code. The standard only says that position represents the plant; which letter stands for which plant is up to each manufacturer. So you need that manufacturer’s list to read it — and NHTSA’s decoder does the lookup for you.</p>
+</section>
+
+<section class="g-section" id="two-rav4s">
+  <h2>One model, two plants</h2>
+  <p>The clearest way to see why position 11 matters is to compare two vehicles that look identical on the dealer’s lot. Both VINs below are 2026 Toyota RAV4s. We decoded both with NHTSA’s public decoder on 30 September 2026 <a class="cite" href="#s4" aria-label="Source 4">[4]</a>:</p>
+  <!-- biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable table must be reachable by keyboard (WCAG 2.1.1, axe scrollable-region-focusable) -->
+  <section class="table-wrap" tabindex="0" aria-label="Two 2026 RAV4 VINs compared">
+    <table class="vin-compare">
+      <caption>Two 2026 RAV4s, two assembly plants</caption>
+      <thead><tr><th scope="col">VIN</th><th scope="col">Position 10 (year)</th><th scope="col">Position 11 (plant)</th><th scope="col">NHTSA: plant</th><th scope="col">Qualifies on assembly?</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">4T36CRAV3TU013521</td><td>T = 2026</td><td>U</td><td>Georgetown, Kentucky, United States</td><td>Yes — assembled in the US</td></tr>
+        <tr><td class="mono">2T36CRAV1TW104951</td><td>T = 2026</td><td>W</td><td>Woodstock, Ontario, Canada</td><td>No — assembled in Canada</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <p>Same make, same model, same model year, same weight class — NHTSA reports both as “Class 1C: 4,001 – 5,000 lb”. One passes the assembly test for the deduction and the other fails it. Nothing about the badge, the brochure or the price tells you which one you are buying; the VIN does.</p>
+</section>
+
+<section class="g-section" id="first-character">
+  <h2>Why the first character does not decide it</h2>
+  <p>A common shortcut says “VINs starting with 1, 4 or 5 were made in the USA”. That shortcut reads the manufacturer identifier in positions 1–3. The federal standard says those characters identify the <em>manufacturer and type</em> of the vehicle <a class="cite" href="#s2" aria-label="Source 2">[2]</a>; it is position 11 that the standard assigns to the plant of manufacture. Manufacturers with plants in several countries use several identifiers, and the identifier is not a statement about where a particular vehicle was put together.</p>
+  <p>The shortcut also misses US plants whose identifiers start with other characters. NHTSA’s list registers Tesla’s <span class="mono">7SA</span> and Rivian’s <span class="mono">7PD</span> to the United States, and NHTSA decodes VINs with those identifiers to plants in Austin, Texas and Normal, Illinois <a class="cite" href="#s5" aria-label="Source 5">[5]</a>.</p>
+  <p>Very often the first character and the plant point to the same country — in the RAV4 pair above, the Kentucky vehicle starts with “4” and the Ontario one with “2”. But the rule you rely on for the deduction is the plant of manufacture or the final assembly point on the label, not the first character. When money depends on it, read position 11 through the decoder, or read the label.</p>
+</section>
+
+<section class="g-section" id="decoder">
+  <h2>Checking with NHTSA’s decoder</h2>
+  <p>The National Highway Traffic Safety Administration runs a free VIN decoder built on the data manufacturers file with it. The IRS itself points to it: the preamble to the final rules says the VIN and NHTSA’s lookup tool can be used to check the weight rating and whether final assembly occurred in the United States <a class="cite" href="#s1" aria-label="Source 1">[1]</a>.</p>
+  <ol class="steps-list">
+    <li>Open the decoder at <a href="https://vpic.nhtsa.dot.gov/decoder/">vpic.nhtsa.dot.gov/decoder</a> and enter all 17 characters.</li>
+    <li>Find the <strong>Plant Information</strong> section at the bottom of the results; NHTSA’s own instructions point there <a class="cite" href="#s6" aria-label="Source 6">[6]</a>. The detailed table lists the same plant as <strong>Plant City</strong>, <strong>Plant State</strong> and <strong>Plant Country</strong>. For the deduction, the plant country has to be the United States.</li>
+    <li>While you are there, note the <strong>gross vehicle weight rating</strong> class. The rating must be less than 14,000 pounds; a class shown as “10,001 – 14,000 lb” includes vehicles rated at exactly 14,000, which do not qualify — check the door-jamb label for the exact figure.</li>
+    <li>If the decoder shows no plant, or reports an error, do not guess. Use the label described below if your vehicle has one, and keep a copy of what you relied on.</li>
+  </ol>
+  <p>Our <a href="https://car.loopnode.live/">Does My Car Qualify?</a> checker does these steps for you: it sends only the VIN to NHTSA’s public decoder and reads the plant and weight class from the answer.</p>
+</section>
+
+<section class="g-section" id="label">
+  <h2>The label on the vehicle</h2>
+  <p>New passenger motor vehicles carry a parts-content label required by 49 CFR Part 583, often printed as part of the window sticker. Among other things it must state the <strong>Final Assembly Point</strong> as city, state and country <a class="cite" href="#s3" aria-label="Source 3">[3]</a>. That line is the second thing the deduction rule lets you rely on.</p>
+  <p>The same label carries figures that are easy to confuse with it:</p>
+  <ul class="checks">
+    <li><strong>U.S./Canadian parts content</strong> — a percentage of parts by value for the whole carline. A high percentage does not mean the vehicle was assembled in the United States.</li>
+    <li><strong>Major sources of foreign parts content</strong> — other countries that supplied parts.</li>
+    <li><strong>Country of origin</strong> of the engine and of the transmission — also not the assembly point.</li>
+  </ul>
+  <p>Only the Final Assembly Point line answers the question the deduction asks. Keep a photo of the label with your purchase papers.</p>
+  <aside class="note"><p><strong>Not every qualifying vehicle has this label.</strong> Part 583 applies to new passenger motor vehicles <a class="cite" href="#s3" aria-label="Source 3">[3]</a>. The law defines those to leave out motorcycles, and to take in trucks, vans and multipurpose vehicles only when they are rated at 8,500 pounds or less <a class="cite" href="#s7" aria-label="Source 7">[7]</a>. A heavy-duty pickup or van rated between 8,501 and 13,999 pounds, or a motorcycle, can still qualify for the deduction, but it may have no such label. For those vehicles, the plant in the VIN is the only route.</p></aside>
+</section>
+
+<section class="g-section" id="check-digit">
+  <h2>The check digit: catching typos</h2>
+  <p>Position 9 exists to catch transcription mistakes — and because the deduction requires the VIN on your tax return, a typo there matters. The standard gives each letter a number — A = 1 to H = 8, then J = 1 to N = 5, P = 7 and R = 9, then S = 2 to Z = 9, with no values for I, O or Q — multiplies every character by a fixed weight for its position, adds the results and divides by 11. The remainder is the check digit, and a remainder of 10 is written “X” <a class="cite" href="#s2" aria-label="Source 2">[2]</a>.</p>
+  <div class="example">
+    <p class="example-h">Worked example · the Kentucky RAV4</p>
+    <ol class="calc">
+      <li>For 4T36CRAV3TU013521, the weighted values add up to 300.</li>
+      <li>300 ÷ 11 = 27, remainder 3.</li>
+    </ol>
+    <p class="example-a">The check digit is 3 — and position 9 is “3”, so the VIN is internally consistent.</p>
+  </div>
+  <p>If you mistype one character, the check digit usually stops matching — but not always: characters with the same value, such as 1, A and J, can swap without changing it. A VIN that fails the check should be fixed before you rely on any decode of it — our checker flags that and never marks such a VIN as qualifying.</p>
+  <div class="cta-tool car">
+    <p><strong>Try it with your VIN.</strong> <a href="https://car.loopnode.live/">Does My Car Qualify?</a> (car.loopnode.live) checks the check digit, asks NHTSA for the plant and weight class, and tells you what to confirm on the label.</p>
+  </div>
+  <p class="not-advice">This guide explains how to read a VIN; it is not tax or legal advice. The deduction depends on more than the assembly plant — see the full rules — and on your own records.</p>
+</section>
+
+<section class="sources" aria-labelledby="sources-h">
+  <h2 id="sources-h">Sources</h2>
+  <ol>
+    <li class="src" id="s1"><a href="https://www.federalregister.gov/documents/2026/09/08/2026-18219/car-loan-interest-deduction">T.D. 10054, 26 CFR §1.163-16(b)(3), (e)(1)(vii) and (e)(3), with the preamble on the NHTSA VIN decoder — Federal Register, September 8, 2026</a> — checked 29 Sep 2026.</li>
+    <li class="src" id="s2"><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-565/subpart-B/section-565.15">49 CFR 565.15, VIN content requirements (positions 1–17, check digit, model-year codes)</a> — read 30 Sep 2026.</li>
+    <li class="src" id="s3"><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-583">49 CFR Part 583: 583.3, applicability (new passenger motor vehicles), and 583.5, label requirements (Final Assembly Point: city, state, country)</a> — read 30 Sep 2026.</li>
+    <li class="src" id="s4">NHTSA vPIC decodes of <a class="mono" href="https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/4T36CRAV3TU013521?format=json">4T36CRAV3TU013521</a> and <a class="mono" href="https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/2T36CRAV1TW104951?format=json">2T36CRAV1TW104951</a> — decoded 30 Sep 2026.</li>
+    <li class="src" id="s5">NHTSA vPIC: manufacturer identifiers registered to <a href="https://vpic.nhtsa.dot.gov/api/vehicles/GetWMIsForManufacturer/tesla?format=json">Tesla</a> and <a href="https://vpic.nhtsa.dot.gov/api/vehicles/GetWMIsForManufacturer/rivian?format=json">Rivian</a>, and decodes of the partial VINs <a class="mono" href="https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/7SAYGDEE%2ASA?format=json">7SAYGDEE*SA</a> and <a class="mono" href="https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/7PDSGABA%2ASN?format=json">7PDSGABA*SN</a> — decoded 30 Sep 2026.</li>
+    <li class="src" id="s6"><a href="https://vpic.nhtsa.dot.gov/decoder/">NHTSA VIN decoder: “Using NHTSA’s VIN Decoder to Identify a Vehicle’s Plant of Manufacture”</a> — read 30 Sep 2026.</li>
+    <li class="src" id="s7"><a href="https://www.govinfo.gov/link/uscode/49/32304">49 U.S.C. 32304(a)(11) and 32101(10): “passenger motor vehicle” (no motorcycles; trucks and multipurpose vehicles up to 8,500 pounds)</a> — read 30 Sep 2026.</li>
+  </ol>
+</section>
+
+</article>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<p class="footer-brand"><img class="logo-mark" src="/img/loopnode-64.png" srcset="/img/loopnode-64.png 2x, /img/loopnode-96.png 3x" width="32" height="32" alt="LoopNode logo"><span>LoopNode</span></p>
+<p>LoopNode makes independent tools. We are not affiliated with any government agency; results are estimates, not advice.</p>
+</div>
+<nav aria-label="Tools" class="footer-col">
+<p class="footer-h">Tools</p>
+<ul><li><a class="quiet" href="https://car.loopnode.live/">Does My Car Qualify?</a></li><li><a class="quiet" href="https://taqaud.loopnode.live/" lang="ar">حاسبة التقاعد</a></li></ul>
+</nav>
+<nav aria-label="Guides" class="footer-col">
+<p class="footer-h">Guides</p>
+<ul><li><a class="quiet" href="/guides/car-loan-interest-deduction.html">Car loan interest deduction</a></li><li><a class="quiet" href="/guides/vin-final-assembly.html">Where was my car assembled?</a></li><li><a class="quiet" href="/guides/saudi-retirement-age-2024.html">Saudi retirement age (2024)</a></li><li><a class="quiet" href="/guides/saudi-early-retirement.html">Saudi early retirement</a></li><li><a class="quiet" href="/guides/how-we-build-and-check.html">How we build and check</a></li></ul>
+</nav>
+<nav aria-label="About and legal" class="footer-col">
+<p class="footer-h">LoopNode</p>
+<ul><li><a class="quiet" href="/about.html">About</a></li><li><a class="quiet" href="/privacy.html">Privacy</a></li><li><a class="quiet" href="/contact.html">Contact</a></li></ul>
+</nav>
+</div>
+<div class="container">
+<p class="copy">© 2026 LoopNode · <a href="mailto:uamurtaza.apps@gmail.com">uamurtaza.apps@gmail.com</a></p>
+</div>
+</footer>
+</body>
+</html>

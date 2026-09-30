@@ -2032,3 +2032,556 @@ main p [lang="ar"] {
     font-size: 13px;
   }
 }
+
+/* =====================================================================================================================
+   Guides (owner decision 2026-09-30): five long-form pages under /guides/ in the v2 light style — a reading column,
+   figure cards, worked examples, tables, dated sources. No ad slots on guides yet.
+   ===================================================================================================================== */
+.site-header nav a[aria-current="true"] {
+  color: var(--link);
+  background: var(--brand-soft);
+}
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.crumbs a {
+  font-weight: 600;
+}
+.crumbs .eyebrow {
+  margin: 0;
+}
+.byline {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+}
+.page .guide {
+  font-size: 17px;
+}
+.guide .g-section + .g-section,
+.guide .sources {
+  margin-top: 40px;
+}
+.guide h2 {
+  font-size: 26px;
+  scroll-margin-top: 88px;
+}
+.guide h3 {
+  margin: 20px 0 8px;
+  font-size: 18px;
+}
+.guide p,
+.guide li {
+  line-height: 1.7;
+}
+.cite {
+  margin-inline-start: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  vertical-align: 2px;
+}
+/* table of contents */
+.toc {
+  margin: 0 0 8px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-2);
+}
+.toc-h {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.page .toc ol {
+  margin: 0;
+  padding-inline-start: 20px;
+  columns: 2 220px;
+  column-gap: 28px;
+}
+.page .toc li {
+  margin: 3px 0;
+  font-size: 15px;
+}
+.g-section[id],
+.sources h2 {
+  scroll-margin-top: 88px;
+}
+/* figure cards */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.kpi-n {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #4338ca;
+}
+.kpi:nth-child(2) .kpi-n {
+  color: #0f766e;
+}
+.kpi:nth-child(3) .kpi-n {
+  color: #8a6516;
+}
+.kpi:nth-child(4) .kpi-n {
+  color: #6d28d9;
+}
+.kpi-l {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+@media (prefers-color-scheme: dark) {
+  .kpi-n {
+    color: #a5b4fc;
+  }
+  .kpi:nth-child(2) .kpi-n {
+    color: #5eead4;
+  }
+  .kpi:nth-child(3) .kpi-n {
+    color: #e3b04b;
+  }
+  .kpi:nth-child(4) .kpi-n {
+    color: #c4b5fd;
+  }
+}
+/* lists */
+.page ul.checks,
+.page ol.mistakes,
+.page ol.steps-list,
+.page ol.principles,
+.page ul.log {
+  padding-inline-start: 0;
+  list-style: none;
+}
+.page .checks li {
+  position: relative;
+  margin: 10px 0;
+  padding-inline-start: 30px;
+}
+.checks li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background:
+    #4f46e5
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / 11px no-repeat;
+}
+.page ol.mistakes,
+.page ol.steps-list,
+.page ol.principles {
+  counter-reset: n;
+}
+.page .mistakes li,
+.page .steps-list li,
+.page .principles li {
+  position: relative;
+  counter-increment: n;
+  margin: 12px 0;
+  padding-inline-start: 38px;
+}
+.mistakes li::before,
+.steps-list li::before,
+.principles li::before {
+  content: counter(n);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 1px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  color: var(--link);
+  font-size: 13px;
+  font-weight: 800;
+}
+.mistakes li::before {
+  background: #fde8e8;
+  color: #9b1c1c;
+}
+@media (prefers-color-scheme: dark) {
+  .mistakes li::before {
+    background: #3b1515;
+    color: #fca5a5;
+  }
+}
+/* callouts and columns */
+.note {
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-inline-start: 4px solid #e3b04b;
+  border-radius: 12px;
+  background: var(--warn-bg);
+}
+.note p {
+  margin: 0;
+}
+.two-col,
+.three-col {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+@media (min-width: 700px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+  .three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.col-card {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-2);
+}
+.col-card p {
+  margin: 0;
+  font-size: 15.5px;
+}
+.col-card .col-h {
+  margin: 0 0 6px;
+  font-weight: 800;
+  font-size: 16px;
+}
+.col-card.ok {
+  border-top: 4px solid #0f766e;
+}
+.col-card.no {
+  border-top: 4px solid #b91c1c;
+}
+/* worked examples */
+.example {
+  margin: 18px 0;
+  padding: 18px 20px;
+  border: 1px solid #c7d2fe;
+  border-radius: 18px;
+  background: #f5f7ff;
+}
+@media (prefers-color-scheme: dark) {
+  .example {
+    border-color: #312e81;
+    background: #161436;
+  }
+}
+.example p {
+  margin: 0;
+}
+.example .example-h {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--link);
+}
+.page .example .calc {
+  margin: 0 0 8px;
+  padding-inline-start: 22px;
+}
+.page .example .calc li {
+  margin: 4px 0;
+}
+.example .example-a {
+  font-weight: 700;
+}
+/* tables */
+.guide .table-wrap {
+  margin: 16px 0 6px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.guide table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+.guide caption {
+  padding: 12px 14px 8px;
+  text-align: start;
+  font-weight: 700;
+}
+.guide th,
+.guide td {
+  padding: 9px 14px;
+  text-align: start;
+  vertical-align: top;
+  border-top: 1px solid var(--border);
+}
+.guide thead th {
+  background: var(--brand-soft);
+  color: var(--text);
+  font-size: 14px;
+}
+.guide tbody tr:nth-child(even) td {
+  background: var(--surface-2);
+}
+.table-src {
+  font-size: 14px;
+  color: var(--muted);
+}
+.mono,
+.vin-part b {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: 0.04em;
+}
+/* the VIN, split into its sections */
+.vin-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0;
+}
+.vin-part {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border-top: 4px solid var(--vin, #4f46e5);
+}
+.vin-part b {
+  font-size: 20px;
+}
+.vin-part i,
+.vin-part em {
+  font-size: 12.5px;
+  font-style: normal;
+  color: var(--muted);
+}
+.vin-part em {
+  font-weight: 700;
+  color: var(--text);
+}
+.vin-part.wmi {
+  --vin: #4f46e5;
+}
+.vin-part.vds {
+  --vin: #64748b;
+}
+.vin-part.chk {
+  --vin: #e3b04b;
+}
+.vin-part.yr {
+  --vin: #0f766e;
+}
+.vin-part.plant {
+  --vin: #b91c1c;
+}
+.vin-part.ser {
+  --vin: #94a3b8;
+}
+/* tool call-to-action */
+.cta-tool {
+  margin: 24px 0 16px;
+  padding: 18px 20px;
+  border-radius: 18px;
+}
+.cta-tool p {
+  margin: 0;
+}
+.cta-tool.car {
+  background: #0e2a24;
+  color: #ecfdf5;
+}
+.cta-tool.car a {
+  color: #b8f36b;
+  font-weight: 800;
+}
+.cta-tool.taqaud {
+  background: #07352b;
+  color: #ecfff8;
+}
+.cta-tool.taqaud a {
+  color: #6ff0cc;
+  font-weight: 800;
+}
+.not-advice {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 15px;
+}
+/* sources */
+.guide .sources {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.guide .sources h2 {
+  font-size: 20px;
+}
+.page .sources ol {
+  padding-inline-start: 22px;
+}
+.page .sources li {
+  margin: 8px 0;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.sources li:target {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+/* corrections log */
+.page .log li {
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  font-size: 15.5px;
+}
+.log-date {
+  display: inline-block;
+  margin-inline-end: 8px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.log-tool {
+  display: inline-block;
+  margin-inline-end: 6px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--link);
+  font-size: 13px;
+  font-weight: 700;
+}
+/* guides index */
+.page ul.guide-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.page .guide-list li {
+  margin: 0;
+}
+.guide-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+}
+.guide-link:hover {
+  border-color: #4f46e5;
+  transform: translateY(-2px);
+  color: var(--text);
+}
+.guide-tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--link);
+}
+.guide-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.guide-sum {
+  font-size: 15.5px;
+  color: var(--muted);
+}
+.guide-meta {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+/* tool cards → their guides (a real link above the card's stretched link) */
+.tool.card .tool-guides {
+  position: relative;
+  z-index: 2;
+  margin: 14px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.tool.tool-car .tool-guides,
+.tool.tool-car .tool-guides a {
+  color: #d3e6df;
+}
+.tool.tool-taqaud .tool-guides,
+.tool.tool-taqaud .tool-guides a {
+  color: #07352b;
+}
+.tool.card .tool-guides a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tool.card .tool-guides a:hover {
+  text-decoration-thickness: 2px;
+}
+/* footer: four columns once the guides join */
+@media (min-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1.6fr 1fr 1.3fr 0.9fr;
+  }
+}
+/* Five nav links (Guides joined 2026-09-30): under 420px the nav takes its own row under the logo; under 340px it wraps. */
+@media (max-width: 420px) {
+  .header-inner {
+    flex-wrap: wrap;
+    row-gap: 0;
+    padding-block: 4px;
+  }
+  .site-header nav {
+    width: 100%;
+  }
+  .site-header nav ul {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 340px) {
+  .site-header nav ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 2px;
+  }
+}
+/* long unbroken link text (e.g. "vpic.nhtsa.dot.gov/decoder") may break on narrow phones */
+.guide a {
+  overflow-wrap: anywhere;
+}

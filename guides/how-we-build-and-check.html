@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>How we build and check our calculators — LoopNode Guides</title>
+<meta name="description" content="How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a second calculator, red-team testing, a corrections log and privacy by design.">
+<meta name="google-adsense-account" content="ca-pub-4816275844541583">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.c453456f.css">
+<link rel="canonical" href="https://loopnode.live/guides/how-we-build-and-check.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="LoopNode Tools">
+<meta property="og:title" content="How we build and check our calculators — LoopNode Guides">
+<meta property="og:description" content="How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a second calculator, red-team testing, a corrections log and privacy by design.">
+<meta property="og:url" content="https://loopnode.live/guides/how-we-build-and-check.html">
+<meta property="og:image" content="https://loopnode.live/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How we build and check our calculators","description":"How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a second calculator, red-team testing, a corrections log and privacy by design.","inLanguage":"en","author":{"@type":"Person","name":"Uzair Ali Murtaza","url":"https://loopnode.live/about.html"},"publisher":{"@type":"Organization","name":"LoopNode","url":"https://loopnode.live/","logo":{"@type":"ImageObject","url":"https://loopnode.live/icon-512.png"}},"datePublished":"2026-09-30","dateModified":"2026-09-30","mainEntityOfPage":"https://loopnode.live/guides/how-we-build-and-check.html","url":"https://loopnode.live/guides/how-we-build-and-check.html","image":"https://loopnode.live/og.png"}</script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="/" aria-label="LoopNode Tools — home"><img class="logo-mark" src="/img/loopnode-64.png" srcset="/img/loopnode-64.png 2x, /img/loopnode-96.png 3x" width="32" height="32" alt="LoopNode logo"><span class="wordmark">LoopNode</span></a>
+<nav aria-label="Site"><ul><li><a href="/">Tools</a></li><li><a href="/guides/" aria-current="true">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/contact.html">Contact</a></li></ul></nav>
+</div>
+</header>
+<main id="content">
+<div class="page">
+<div class="page-hero guide-hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container">
+  <div class="page-hero-inner">
+    <p class="crumbs"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> <span class="eyebrow">Our method</span></p>
+    <h1>How we build and check our calculators</h1>
+    <p class="page-lead">Every rule our tools use comes from a primary source, with the date we read it. How we turn those rules into calculators, how we try to break them, and how we fix our mistakes.</p>
+    <p class="byline">By Uzair Ali Murtaza · Last reviewed 30 Sep 2026</p>
+  </div>
+  </div>
+</div>
+<div class="container page-body">
+<article class="card explain guide">
+<nav class="toc" aria-label="On this page">
+  <p class="toc-h">On this page</p>
+  <ol>
+    <li><a href="#principles">Four rules we hold ourselves to</a></li>
+    <li><a href="#sources">1 · Primary sources, with dates</a></li>
+    <li><a href="#answer-key">2 · An answer key worked out by hand</a></li>
+    <li><a href="#oracle">3 · A second calculator, for the retirement tool</a></li>
+    <li><a href="#red-team">4 · A red team that tries to break it</a></li>
+    <li><a href="#gates">5 · Checks before release</a></li>
+    <li><a href="#privacy">Nothing you type leaves your browser</a></li>
+    <li><a href="#corrections">Corrections log</a></li>
+  </ol>
+</nav>
+
+<section class="g-section" id="principles">
+  <h2>Four rules we hold ourselves to</h2>
+  <p>LoopNode tools answer questions where a wrong number costs people money or plans: whether a car loan’s interest is deductible, when someone can retire. This page explains how we build and check them, and where the checks differ from one tool to another — so you can judge how far to trust a result.</p>
+  <ol class="principles">
+    <li><strong>Only primary sources.</strong> A rule goes into a tool only if we can quote it from the government page, law or regulation that sets it.</li>
+    <li><strong>Show the working.</strong> Every result comes with its steps and the source of each rule, so you can check it against your own documents.</li>
+    <li><strong>Leave out what we cannot verify.</strong> If no primary text states a rule, the tool says so instead of guessing.</li>
+    <li><strong>Fix mistakes in the open.</strong> Confirmed errors are corrected and listed below, and the serious ones get a test that would have caught them.</li>
+  </ol>
+</section>
+
+<section class="g-section" id="sources">
+  <h2>1 · Primary sources, with dates</h2>
+  <p>Each tool keeps its rules in a data file, separate from the code, with the exact passage each rule comes from, quoted in the original language. In the retirement calculator’s file, every rule also carries the address of its page and the date we read it, and we keep a saved copy of each page. The car checker’s file names its source — the Treasury regulation — and the date we read it once, for the whole file.</p>
+  <p>The retirement calculator’s file holds 60 quoted passages from GOSI’s pages and from the text of the 1445 AH Social Insurance Law, including every row of both transition tables <a class="cite" href="#s1" aria-label="Source 1">[1]</a><a class="cite" href="#s2" aria-label="Source 2">[2]</a>. An automated test checks that each of the 60 still appears, word for word, in the saved copy of its page. The car checker’s file quotes the Treasury regulation section by section: 16 rules, and 8 of the 19 worked examples the regulation contains <a class="cite" href="#s3" aria-label="Source 3">[3]</a>.</p>
+  <p>“Leave out what we cannot verify” is not a slogan. The retirement calculator did not show the new law’s early-retirement discount until we found the law’s own text on 30 September 2026 <a class="cite" href="#s2" aria-label="Source 2">[2]</a>. Until then, the page said the rate was not shown and why. It now states the rate, but it does not calculate the reduced amount yet.</p>
+</section>
+
+<section class="g-section" id="answer-key">
+  <h2>2 · An answer key worked out by hand</h2>
+  <p>For each tool we work out a set of cases by hand from the sources, including the examples the agencies publish themselves. For the retirement calculator that is eight cases covering every group and the traps: GOSI’s own pension example and its early-retirement example (215 months, so 324 needed), plus our own cases for two people born a day apart, for periods already compensated, and for the 100% cap. For the car checker it is 8 of the regulation’s worked examples plus eight real VINs whose plants and weight classes we checked.</p>
+  <p>A tool is only finished when it reproduces every number in its key exactly. The key then stays in the test suite, so a later change that breaks one of them cannot ship.</p>
+</section>
+
+<section class="g-section" id="oracle">
+  <h2>3 · A second calculator, for the retirement tool</h2>
+  <p>Hand-made cases catch the obvious; they do not catch every edge. For the retirement calculator, a separate AI review wrote a second, throwaway calculator from the sources — an “oracle” — and ran both on the same inputs. We have used an oracle only for the retirement calculator; the car checker is tested against the regulation’s examples and real VINs instead.</p>
+  <div class="kpis">
+    <div class="kpi"><span class="kpi-n">1,762</span><span class="kpi-l">cases compared against the oracle, in three browser engines: 0 mismatches</span></div>
+    <div class="kpi"><span class="kpi-n">900</span><span class="kpi-l">people entered once by Hijri and once by Gregorian birth date: identical results</span></div>
+    <div class="kpi"><span class="kpi-n">7,886</span><span class="kpi-l">consecutive birth dates checked for consistency, in each of three engines</span></div>
+  </div>
+  <p>Those figures come from the review of 30 September 2026, in our internal records. The cases covered every age band, both sides of each boundary, 29 February births and 1,500 random people. The consistency checks test properties that must always hold, whatever the rules: more months of contribution never make your retirement later, a later birth never makes it earlier, and the pension never falls when your wage rises. The same review found that new-law pensions could go above the 100% cap and be paid below 180 months; since the fixes of 30 September 2026, the pension never breaks its cap or its minimum.</p>
+</section>
+
+<section class="g-section" id="red-team">
+  <h2>4 · A red team that tries to break it</h2>
+  <p>Each site also goes through a red-team review, run apart from the build, whose only job is to make the tool give a wrong or misleading answer. It types Arabic-Indic digits, pastes numbers with invisible characters, chooses impossible dates, switches off JavaScript, prints the page, shrinks it to a 280-pixel phone, and simulates the outside services failing.</p>
+  <p>In the review of 30 September 2026, the car checker was tested with 16 real lookups to NHTSA’s decoder, and every kind of failure of that service was simulated. A crawl of the sites followed 96 addresses across 12 pages and found no broken links. Both figures are from our internal records. Each must-fix finding became a test that failed first and passed only once it was fixed; the fixes are in the corrections log below.</p>
+</section>
+
+<section class="g-section" id="gates">
+  <h2>5 · Checks before release</h2>
+  <ul class="checks">
+    <li><strong>Accessibility.</strong> An automated audit on every page, plus our own colour-contrast check, because the standard audit skips Arabic text.</li>
+    <li><strong>Phones.</strong> No page may scroll sideways on phone-width screens, in light or dark mode — tested down to 320 pixels wide, and to 280 on this site and the retirement calculator.</li>
+    <li><strong>Speed and stability.</strong> Releases that change a page’s layout, text or scripts are measured for load speed and layout shift on every page.</li>
+    <li><strong>Reproducible builds.</strong> For this site and the retirement calculator, two builds from a clean copy must produce byte-identical files, so what we tested is exactly what is published.</li>
+  </ul>
+</section>
+
+<section class="g-section" id="privacy">
+  <h2>Nothing you type leaves your browser</h2>
+  <p>The retirement calculator does all of its arithmetic on your device. A test types a full set of details and checks that no request leaves the site — its fonts load from the same site — and that nothing is stored. The car checker sends one thing, the VIN, and only when you ask for a check: straight to NHTSA’s public decoder, not to us <a class="cite" href="#s4" aria-label="Source 4">[4]</a>. Your loan figures and income stay in your browser. Neither tool has accounts or a database. The <a href="/privacy.html">privacy policy</a> has the details.</p>
+  <p>LoopNode is independent. We are <strong>not affiliated</strong> with the IRS, the Treasury Department, NHTSA or GOSI, and our results are estimates to help you understand the rules. They are not tax, legal or financial advice.</p>
+</section>
+
+<section class="g-section" id="corrections">
+  <h2>Corrections log</h2>
+  <p>Confirmed errors, what we changed, and when. The first entries come from the separate AI review of 30 September 2026; the newest from the fact-check of these guides on the same day.</p>
+  <ul class="log">
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Guides</span> Fact-check of the five guides: the new law covers everyone with no uncompensated earlier periods, including people whose earlier periods were all paid out as compensation. The Saudi guides and the retirement calculator had said “no contribution periods at all”; its form now asks about uncompensated periods.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Guides</span> Saudi early retirement: the 324 months in GOSI’s example apply in each system separately, 180 months is the minimum for a retirement pension, and the implementing regulation is cited.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Guides</span> Car loan interest: model year does not make a car used; a car that someone else already owned, titled or leased does. The VIN guide now says that motorcycles and trucks or vans rated over 8,500 pounds may have no assembly label.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Guides</span> This page: the car regulation has 19 worked examples, of which our file holds 8; the second “oracle” calculator was used only for the retirement calculator; GOSI publishes one early-retirement example, not two.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Retirement calculator</span> New-law pensions: a pension now needs at least 180 months, is capped at 100% of the average wage, and is raised to the Article 17 minimum (2,000 to 4,000 riyals). Before, 12 months showed a small monthly pension.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Retirement calculator</span> A birth date after 3 July 2024 with earlier contribution periods now gives a clear error; before, the page stopped responding and could leave an old result on screen.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Retirement calculator</span> Numbers are no longer cut off silently (“215” typed as years became 21), and impossible combinations — more months than a person could have worked — are flagged.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Retirement calculator</span> The page now states the new law’s early-retirement discount from the law’s text (3% for every 12 months).</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Car checker</span> Refinancing: the original loan must itself have been taken after December 31, 2024; the checker now asks.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Car checker</span> A weight rating typed from the door label is checked against NHTSA’s weight class, and a vehicle that does not qualify never shows a deduction amount.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">Car checker</span> A VIN whose check digit does not match is never marked as qualifying, and a 2023-or-older model year gets a reminder that only new vehicles qualify.</li>
+    <li><span class="log-date">30 Sep 2026</span> <span class="log-tool">LoopNode home</span> The example VIN in the showcase is now a 2026, US-built vehicle; the earlier 2003 VIN could not qualify.</li>
+  </ul>
+  <p>Found something we got wrong? <a href="/contact.html">Tell us</a> what you entered, what the tool showed and what you expected, with a link to the official source if you have one.</p>
+  <p class="not-advice">This page describes how we build and test our tools; it is not tax, legal or financial advice.</p>
+</section>
+
+<section class="sources" aria-labelledby="sources-h">
+  <h2 id="sources-h">Sources</h2>
+  <ol>
+    <li class="src" id="s1"><a href="https://awareness.gosi.gov.sa/journey4.html">GOSI awareness platform — the transition tables and the amended rules quoted in the retirement calculator’s rule file</a> — checked 29 Sep 2026.</li>
+    <li class="src" id="s2"><a href="https://beta.gosi.gov.sa/ar/new-system">GOSI — the Social Insurance Law 1445 AH, full text</a> — read 30 Sep 2026.</li>
+    <li class="src" id="s3"><a href="https://www.federalregister.gov/documents/2026/09/08/2026-18219/car-loan-interest-deduction">T.D. 10054, Car Loan Interest Deduction, Federal Register, September 8, 2026 — the source of the car checker’s rules and worked examples</a> — checked 29 Sep 2026; re-read 30 Sep 2026.</li>
+    <li class="src" id="s4"><a href="https://vpic.nhtsa.dot.gov/api/">NHTSA vPIC, the public VIN decoder the car checker asks</a> — checked 29 Sep 2026.</li>
+  </ol>
+</section>
+
+</article>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<p class="footer-brand"><img class="logo-mark" src="/img/loopnode-64.png" srcset="/img/loopnode-64.png 2x, /img/loopnode-96.png 3x" width="32" height="32" alt="LoopNode logo"><span>LoopNode</span></p>
+<p>LoopNode makes independent tools. We are not affiliated with any government agency; results are estimates, not advice.</p>
+</div>
+<nav aria-label="Tools" class="footer-col">
+<p class="footer-h">Tools</p>
+<ul><li><a class="quiet" href="https://car.loopnode.live/">Does My Car Qualify?</a></li><li><a class="quiet" href="https://taqaud.loopnode.live/" lang="ar">حاسبة التقاعد</a></li></ul>
+</nav>
+<nav aria-label="Guides" class="footer-col">
+<p class="footer-h">Guides</p>
+<ul><li><a class="quiet" href="/guides/car-loan-interest-deduction.html">Car loan interest deduction</a></li><li><a class="quiet" href="/guides/vin-final-assembly.html">Where was my car assembled?</a></li><li><a class="quiet" href="/guides/saudi-retirement-age-2024.html">Saudi retirement age (2024)</a></li><li><a class="quiet" href="/guides/saudi-early-retirement.html">Saudi early retirement</a></li><li><a class="quiet" href="/guides/how-we-build-and-check.html">How we build and check</a></li></ul>
+</nav>
+<nav aria-label="About and legal" class="footer-col">
+<p class="footer-h">LoopNode</p>
+<ul><li><a class="quiet" href="/about.html">About</a></li><li><a class="quiet" href="/privacy.html">Privacy</a></li><li><a class="quiet" href="/contact.html">Contact</a></li></ul>
+</nav>
+</div>
+<div class="container">
+<p class="copy">© 2026 LoopNode · <a href="mailto:uamurtaza.apps@gmail.com">uamurtaza.apps@gmail.com</a></p>
+</div>
+</footer>
+</body>
+</html>
