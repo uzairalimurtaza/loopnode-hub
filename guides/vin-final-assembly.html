@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>How to tell where your car was assembled from its VIN — LoopNode Guides</title>
-<meta name="description" content="Find a car's final assembly plant from its VIN: the 17 positions, the check digit, NHTSA's decoder and the window sticker, with two 2026 RAV4s from different plants.">
+<title>Was My Car Assembled in the US? How to Tell From the VIN</title>
+<meta name="description" content="Read a car's final assembly plant from its VIN: the 17 characters, the check digit, NHTSA's decoder and the window label, with two 2026 RAV4s from two plants.">
 <meta name="google-adsense-account" content="ca-pub-4816275844541583">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
@@ -19,19 +19,19 @@
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.b48debfa.css">
+<link rel="stylesheet" href="/styles.0f857ff8.css">
 <link rel="canonical" href="https://loopnode.live/guides/vin-final-assembly.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="LoopNode Tools">
-<meta property="og:title" content="How to tell where your car was assembled from its VIN — LoopNode Guides">
-<meta property="og:description" content="Find a car's final assembly plant from its VIN: the 17 positions, the check digit, NHTSA's decoder and the window sticker, with two 2026 RAV4s from different plants.">
+<meta property="og:title" content="Was My Car Assembled in the US? How to Tell From the VIN">
+<meta property="og:description" content="Read a car's final assembly plant from its VIN: the 17 characters, the check digit, NHTSA's decoder and the window label, with two 2026 RAV4s from two plants.">
 <meta property="og:url" content="https://loopnode.live/guides/vin-final-assembly.html">
 <meta property="og:image" content="https://loopnode.live/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to tell where your car was assembled from its VIN","description":"Find a car's final assembly plant from its VIN: the 17 positions, the check digit, NHTSA's decoder and the window sticker, with two 2026 RAV4s from different plants.","inLanguage":"en","author":{"@type":"Person","name":"Uzair Ali Murtaza","url":"https://loopnode.live/about.html"},"publisher":{"@type":"Organization","name":"LoopNode","url":"https://loopnode.live/","logo":{"@type":"ImageObject","url":"https://loopnode.live/icon-512.png"}},"datePublished":"2026-09-30","dateModified":"2026-09-30","mainEntityOfPage":"https://loopnode.live/guides/vin-final-assembly.html","url":"https://loopnode.live/guides/vin-final-assembly.html","image":"https://loopnode.live/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to tell where your car was assembled from its VIN","description":"Read a car's final assembly plant from its VIN: the 17 characters, the check digit, NHTSA's decoder and the window label, with two 2026 RAV4s from two plants.","inLanguage":"en","author":{"@type":"Person","name":"Uzair Ali Murtaza","url":"https://loopnode.live/about.html"},"publisher":{"@type":"Organization","name":"LoopNode","url":"https://loopnode.live/","logo":{"@type":"ImageObject","url":"https://loopnode.live/icon-512.png"}},"datePublished":"2026-09-30","dateModified":"2026-09-30","mainEntityOfPage":"https://loopnode.live/guides/vin-final-assembly.html","url":"https://loopnode.live/guides/vin-final-assembly.html","image":"https://loopnode.live/og.png"}</script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -62,7 +62,7 @@
     <li><a href="#why">Why the assembly plant matters</a></li>
     <li><a href="#anatomy">The 17 characters of a VIN</a></li>
     <li><a href="#two-rav4s">One model, two plants</a></li>
-    <li><a href="#first-character">Why the first character does not decide it</a></li>
+    <li><a href="#first-character">Which VIN character shows the country — and why it doesn’t decide it</a></li>
     <li><a href="#decoder">Checking with NHTSA’s decoder</a></li>
     <li><a href="#label">The label on the vehicle</a></li>
     <li><a href="#check-digit">The check digit: catching typos</a></li>
@@ -109,12 +109,12 @@
   <p>The clearest way to see why position 11 matters is to compare two vehicles that look identical on the dealer’s lot. Both VINs below are 2026 Toyota RAV4s. We decoded both with NHTSA’s public decoder on 30 September 2026 <a class="cite" href="#s4" aria-label="Source 4">[4]</a>:</p>
   <!-- biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable table must be reachable by keyboard (WCAG 2.1.1, axe scrollable-region-focusable) -->
   <section class="table-wrap" tabindex="0" aria-label="Two 2026 RAV4 VINs compared">
-    <table class="vin-compare">
+    <table class="vin-compare stack">
       <caption>Two 2026 RAV4s, two assembly plants</caption>
       <thead><tr><th scope="col">VIN</th><th scope="col">Position 10 (year)</th><th scope="col">Position 11 (plant)</th><th scope="col">NHTSA: plant</th><th scope="col">Qualifies on assembly?</th></tr></thead>
       <tbody>
-        <tr><td class="mono">4T36CRAV3TU013521</td><td>T = 2026</td><td>U</td><td>Georgetown, Kentucky, United States</td><td>Yes — assembled in the US</td></tr>
-        <tr><td class="mono">2T36CRAV1TW104951</td><td>T = 2026</td><td>W</td><td>Woodstock, Ontario, Canada</td><td>No — assembled in Canada</td></tr>
+        <tr><td class="mono" data-label="VIN">4T36CRAV3TU013521</td><td data-label="Position 10 (year)">T = 2026</td><td data-label="Position 11 (plant)">U</td><td data-label="NHTSA: plant">Georgetown, Kentucky, United States</td><td data-label="Qualifies on assembly?">Yes — assembled in the US</td></tr>
+        <tr><td class="mono" data-label="VIN">2T36CRAV1TW104951</td><td data-label="Position 10 (year)">T = 2026</td><td data-label="Position 11 (plant)">W</td><td data-label="NHTSA: plant">Woodstock, Ontario, Canada</td><td data-label="Qualifies on assembly?">No — assembled in Canada</td></tr>
       </tbody>
     </table>
   </section>
@@ -122,7 +122,7 @@
 </section>
 
 <section class="g-section" id="first-character">
-  <h2>Why the first character does not decide it</h2>
+  <h2>Which VIN character shows the country — and why it doesn’t decide it</h2>
   <p>A common shortcut says “VINs starting with 1, 4 or 5 were made in the USA”. That shortcut reads the manufacturer identifier in positions 1–3. The federal standard says those characters identify the <em>manufacturer and type</em> of the vehicle <a class="cite" href="#s2" aria-label="Source 2">[2]</a>; it is position 11 that the standard assigns to the plant of manufacture. Manufacturers with plants in several countries use several identifiers, and the identifier is not a statement about where a particular vehicle was put together.</p>
   <p>The shortcut also misses US plants whose identifiers start with other characters. NHTSA’s list registers Tesla’s <span class="mono">7SA</span> and Rivian’s <span class="mono">7PD</span> to the United States, and NHTSA decodes VINs with those identifiers to plants in Austin, Texas and Normal, Illinois <a class="cite" href="#s5" aria-label="Source 5">[5]</a>.</p>
   <p>Very often the first character and the plant point to the same country — in the RAV4 pair above, the Kentucky vehicle starts with “4” and the Ontario one with “2”. But the rule you rely on for the deduction is the plant of manufacture or the final assembly point on the label, not the first character. When money depends on it, read position 11 through the decoder, or read the label.</p>

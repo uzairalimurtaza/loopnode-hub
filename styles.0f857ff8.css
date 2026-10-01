@@ -3374,3 +3374,261 @@ main p [lang="ar"] {
   width: auto;
   height: 48px;
 }
+
+/* ---------- Responsive audit (2026-10-01): every page × 23 viewports (280 → 2560, phone landscape) ---------- */
+/* Header: six nav links (Apps joined) no longer fit beside the logo below ~600px. Below 640px the nav takes its own
+   row under the logo + wordmark; below 380px the links tighten; below 340px they form a 3 × 2 grid (no orphan). */
+@media (max-width: 639px) {
+  .header-inner {
+    flex-wrap: wrap;
+    row-gap: 0;
+    padding-block: 4px;
+  }
+  .site-header nav {
+    width: 100%;
+  }
+  .site-header nav ul {
+    justify-content: space-between;
+  }
+  .site-header nav a {
+    padding: 0 6px;
+    font-size: 14px;
+  }
+  .wordmark {
+    display: inline;
+  }
+}
+@media (max-width: 379px) {
+  .site-header nav a {
+    padding: 0 3px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 339px) {
+  .site-header nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 4px;
+  }
+  .site-header nav a {
+    justify-content: center;
+    width: 100%;
+  }
+}
+/* Breadcrumb links are tap targets too: at least 24px tall (WCAG 2.5.8). */
+.crumbs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+/* A long address or URL in a lead never runs off a narrow screen. */
+.page-lead a,
+.apps-lead a,
+.product-lead a {
+  overflow-wrap: anywhere;
+}
+/* Home hero, 960–1279px: the Arabic card covered the car card's "$10,000". It drops its two small tiles there and
+   sits below the car card's number. */
+@media (min-width: 960px) and (max-width: 1279px) {
+  .sc-taqaud .sc-tiles {
+    display: none;
+  }
+  .showcase {
+    min-height: 640px;
+  }
+}
+/* Phones under 400px: the two hero buttons stay side by side (the first tool card must start above a 390×844 fold,
+   review 1 #8) with slightly smaller text, so "How we build them" fits on one line; under 360px they stack. */
+@media (max-width: 399px) {
+  .hero-cta .btn {
+    padding: 0 8px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 359px) {
+  .hero-cta {
+    flex-wrap: wrap;
+  }
+  .hero-cta .btn {
+    flex: 1 1 100%;
+  }
+}
+/* "a year" never splits after "a" in the car preview card. */
+.sc-big .sc-small {
+  white-space: nowrap;
+}
+/* Very narrow phones (< 360px): the two preview cards stack; the metric numbers shrink. */
+@media (max-width: 359px) {
+  .showcase {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .metrics > div {
+    padding: 18px 14px;
+  }
+  .metrics dd {
+    font-size: 34px;
+  }
+}
+/* Guide tables on phones: tighter cells so four money columns fit; the wide VIN comparison becomes labelled cards. */
+@media (max-width: 600px) {
+  .guide table {
+    font-size: 14px;
+  }
+  .guide th,
+  .guide td {
+    padding: 8px 9px;
+  }
+  .guide caption {
+    padding: 10px 10px 6px;
+  }
+}
+@media (max-width: 640px) {
+  .guide table.stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .guide table.stack,
+  .guide table.stack tbody,
+  .guide table.stack tr {
+    display: block;
+    width: 100%;
+  }
+  .guide table.stack tr + tr {
+    border-top: 1px solid var(--border);
+  }
+  .guide table.stack td {
+    display: grid;
+    grid-template-columns: minmax(0, 8.5em) minmax(0, 1fr);
+    gap: 10px;
+    border-top: 0;
+    padding: 6px 12px;
+    background: none;
+    overflow-wrap: anywhere;
+  }
+  .guide table.stack tr:first-child td:first-child {
+    padding-top: 10px;
+  }
+  .guide table.stack td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+/* the four-column money table fits down to 430px; below that it stacks the same way */
+@media (max-width: 429px) {
+  .guide table.stack-narrow thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .guide table.stack-narrow,
+  .guide table.stack-narrow tbody,
+  .guide table.stack-narrow tr {
+    display: block;
+    width: 100%;
+  }
+  .guide table.stack-narrow tr + tr {
+    border-top: 1px solid var(--border);
+  }
+  .guide table.stack-narrow td {
+    display: grid;
+    grid-template-columns: minmax(0, 8.5em) minmax(0, 1fr);
+    gap: 10px;
+    border-top: 0;
+    padding: 6px 12px;
+    background: none;
+    overflow-wrap: anywhere;
+  }
+  .guide table.stack-narrow tr:first-child td:first-child {
+    padding-top: 10px;
+  }
+  .guide table.stack-narrow td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+/* Small phones: long guide and page titles at 34px instead of 42px (6–7 lines at 320px). */
+@media (max-width: 379px) {
+  .page .page-hero h1 {
+    font-size: 34px;
+  }
+}
+/* Under 340px the nav is two rows, so the header (≈ 116px) no longer follows the page: it would take a fifth of a
+   568px-tall screen. It stays sticky everywhere else. */
+@media (max-width: 339px) {
+  .site-header {
+    position: static;
+  }
+}
+/* Tablets (760–1023px): five footer columns were ~120px wide and wrapped links onto three lines; the brand block now
+   takes its own row above the four link columns. */
+@media (min-width: 760px) and (max-width: 1023px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .footer-grid > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+/* Stacked tables: the caption spans the card (it was squeezed into a narrow column); in the VIN comparison each label
+   sits above its value, so a 17-character VIN never wraps. */
+@media (max-width: 640px) {
+  .guide table.stack caption {
+    display: block;
+  }
+  .guide table.stack td {
+    display: block;
+  }
+  .guide table.stack td::before {
+    display: block;
+    margin-bottom: 2px;
+  }
+}
+@media (max-width: 429px) {
+  .guide table.stack-narrow caption {
+    display: block;
+  }
+}
+
+/* ---------- SEO pass 1 (2026-10-02): body links the homepage was missing ---------- */
+.band-link {
+  margin: 32px 0 0;
+  font-weight: 600;
+}
+.band-dark .band-link a {
+  color: #ffffff;
+  text-decoration-color: rgb(255 255 255 / 0.5);
+}
+.band-dark .band-link a:hover {
+  color: #c7d2fe;
+}
+.tools-more {
+  max-width: 68ch;
+  margin: 20px 0 0;
+  color: var(--muted);
+}
+.tools-more a {
+  font-weight: 600;
+}
+/* /guides/: the cards sit under topic headings (AUDIT I-1) */
+.page .guides-list .guide-group {
+  margin: 28px 0 12px;
+  font-size: 20px;
+}
+.page .guides-list .guide-group:first-child {
+  margin-top: 0;
+}
+.page .guides-list .guide-list + .guide-group {
+  margin-top: 32px;
+}

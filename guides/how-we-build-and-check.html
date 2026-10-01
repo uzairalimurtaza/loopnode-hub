@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>How we build and check our calculators — LoopNode Guides</title>
-<meta name="description" content="How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a second calculator, red-team testing, a corrections log and privacy by design.">
+<title>How We Build and Check Our Calculators</title>
+<meta name="description" content="How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a red team, checks before release, a corrections log and privacy.">
 <meta name="google-adsense-account" content="ca-pub-4816275844541583">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
@@ -19,19 +19,19 @@
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/plex-arabic-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.b48debfa.css">
+<link rel="stylesheet" href="/styles.0f857ff8.css">
 <link rel="canonical" href="https://loopnode.live/guides/how-we-build-and-check.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="LoopNode Tools">
-<meta property="og:title" content="How we build and check our calculators — LoopNode Guides">
-<meta property="og:description" content="How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a second calculator, red-team testing, a corrections log and privacy by design.">
+<meta property="og:title" content="How We Build and Check Our Calculators">
+<meta property="og:description" content="How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a red team, checks before release, a corrections log and privacy.">
 <meta property="og:url" content="https://loopnode.live/guides/how-we-build-and-check.html">
 <meta property="og:image" content="https://loopnode.live/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How we build and check our calculators","description":"How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a second calculator, red-team testing, a corrections log and privacy by design.","inLanguage":"en","author":{"@type":"Person","name":"Uzair Ali Murtaza","url":"https://loopnode.live/about.html"},"publisher":{"@type":"Organization","name":"LoopNode","url":"https://loopnode.live/","logo":{"@type":"ImageObject","url":"https://loopnode.live/icon-512.png"}},"datePublished":"2026-09-30","dateModified":"2026-09-30","mainEntityOfPage":"https://loopnode.live/guides/how-we-build-and-check.html","url":"https://loopnode.live/guides/how-we-build-and-check.html","image":"https://loopnode.live/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How we build and check our calculators","description":"How LoopNode builds its calculators: primary sources with dates, hand-worked answer keys, a red team, checks before release, a corrections log and privacy.","inLanguage":"en","author":{"@type":"Person","name":"Uzair Ali Murtaza","url":"https://loopnode.live/about.html"},"publisher":{"@type":"Organization","name":"LoopNode","url":"https://loopnode.live/","logo":{"@type":"ImageObject","url":"https://loopnode.live/icon-512.png"}},"datePublished":"2026-09-30","dateModified":"2026-09-30","mainEntityOfPage":"https://loopnode.live/guides/how-we-build-and-check.html","url":"https://loopnode.live/guides/how-we-build-and-check.html","image":"https://loopnode.live/og.png"}</script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -84,7 +84,7 @@
 <section class="g-section" id="sources">
   <h2>1 · Primary sources, with dates</h2>
   <p>Each tool keeps its rules in a data file, separate from the code, with the exact passage each rule comes from, quoted in the original language. In the retirement calculator’s file, every rule also carries the address of its page and the date we read it, and we keep a saved copy of each page. The car checker’s file names its source — the Treasury regulation — and the date we read it once, for the whole file.</p>
-  <p>The retirement calculator’s file holds 60 quoted passages from GOSI’s pages and from the text of the 1445 AH Social Insurance Law, including every row of both transition tables <a class="cite" href="#s1" aria-label="Source 1">[1]</a><a class="cite" href="#s2" aria-label="Source 2">[2]</a>. An automated test checks that each of the 60 still appears, word for word, in the saved copy of its page. The car checker’s file quotes the Treasury regulation section by section: 16 rules, and 8 of the 19 worked examples the regulation contains <a class="cite" href="#s3" aria-label="Source 3">[3]</a>.</p>
+  <p>The retirement calculator’s file holds 68 quoted passages from GOSI’s pages and from the text of the 1445 AH Social Insurance Law, including every row of both transition tables <a class="cite" href="#s1" aria-label="Source 1">[1]</a><a class="cite" href="#s2" aria-label="Source 2">[2]</a>. An automated test checks that each of the 68 still appears, word for word, in the saved copy of its page. The car checker’s file quotes the Treasury regulation section by section: 19 rules, and 8 of the 19 worked examples the regulation contains <a class="cite" href="#s3" aria-label="Source 3">[3]</a>.</p>
   <p>“Leave out what we cannot verify” is not a slogan. The retirement calculator did not show the new law’s early-retirement discount until we found the law’s own text on 30 September 2026 <a class="cite" href="#s2" aria-label="Source 2">[2]</a>. Until then, the page said the rate was not shown and why. It now states the rate, but it does not calculate the reduced amount yet.</p>
 </section>
 
