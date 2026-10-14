@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://loopnode.live/sitemap.xml
